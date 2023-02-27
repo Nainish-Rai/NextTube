@@ -1,8 +1,12 @@
 import React from 'react'
 
-const SideBarItem = ({title}) => {
+const SideBarItem = ({title,icon}) => {
   return (
-    <div className=' text-gray-400 cursor-pointer hover:text-gray-200 hover:bg-gray-800 hover:bg-opacity-50 rounded-md'>{title}</div>
+    <div  className='flex gap-1 hover:bg-gray-500/10 cursor-pointer  pl-2 items-center p-1 rounded'>
+    <div className=''>{icon}</div>
+<div className=' text-gray-300 pl-2 cursor-pointer hover:text-gray-200 '>
+    {title}</div>
+</div>
   )
 }
 

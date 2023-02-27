@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import CommentCard from "./CommentCard";
-import dummy from "./dummyComments.json";
+import CommentCard from "../components/CommentCard";
+import dummy from "../components/dummyComments.json";
 import { api } from "../utils/api";
 const CommentSection = (videoId) => {
   const [data, setData] = useState([]);

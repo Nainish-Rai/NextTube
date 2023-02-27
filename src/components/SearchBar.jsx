@@ -1,21 +1,32 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { api } from "../utils/api";
+import { Ref } from "react";
+
 
 
 const SearchBar = () => {
   const navigate = useNavigate();
-
-  const [searchTerm,setSearchTerm]=useState("")
+  // const suggestionMenu = useRef(null)
+  const [searchTerm,setSearchTerm]=useState(false)
   const [suggestions,setSuggestions]=useState([])
   const [suggestionsToggle,setSuggestionsToggle]=useState(false)
 
-  
+//   window.onclick = e => {
+//     console.log(e.target.innerText);  // to get the element
+//     // console.log(e.target.tagName);  // to get the element tag name alone
+// } 
+//   // const toggleSuggestionMenu = (e)=>{
+//   //   if(suggestionMenu.current && suggestionsToggle && !suggestionMenu.current.contains(e.target)){
+//   //     setSuggestionsToggle("")
+//   //   }
+//   // }
+  // document.addEventListener('mousedown',()=>{setSuggestionsToggle(false)})
   useEffect(()=>{
     api(`search/suggestions?q=${searchTerm}`).then((response)=>{
       setSuggestions(response.suggestions)
-      console.log(response.suggestions)
+      // console.log(response.suggestions)
     })
    },[searchTerm])
 
@@ -37,12 +48,13 @@ const SearchBar = () => {
     <div className="rounded-lg overflow-hidden searchbar w-full mr-2 sm:mr-0 flex text-slate-300 items-center relative focus:w-full">
       <form  onSubmit={handleSubmit} className=" w-full">
       <input
-        className="searchfocus w-full bg-bg-secondary/95   font-semibold text-sm p-2 px-5 pr-12 "
+      // ref={suggestionMenu}
+        className={`searchfocus w-full bg-bg-secondary/95 font-semibold text-sm p-2 px-5 pr-12 `}
         type="text"
         onFocus={()=>setSuggestionsToggle(true)}
         onBlur={()=>setSuggestionsToggle(false)}
         placeholder="Search..."
-        onChange={(e)=>setSearchTerm(e.target.value)}
+        onChange={(e)=>{setSearchTerm(e.target.value)}}
        
         onKeyDown={handleKeyDown}
       /></form>
@@ -65,11 +77,12 @@ const SearchBar = () => {
      {/* sugesstions*/}
    {suggestionsToggle  && searchTerm &&  <div className="absolute backdrop-blur-[3px] bg-bg-primary/50 border border-gray-200/[15%]  w-[32%] ml-1  -bottom-60 z-30 rounded-md">
         <div>
-          {suggestions.filter((item,index)=>index<7).map((item)=>{
+          {suggestions.slice(0,7).map((item)=>{
             return(
-              <p onClick={()=>{ setSearchTerm("");navigate(`/search/${item}`);}} className="my-2 pl-5 px-2 cursor-pointer hover:text-red-500 font-normal text-base">{item}</p>
+              // mousedown is used beacuse it fires before onBlur in inputText so search get executed
+              <p  onMouseDown={()=>{setSearchTerm("");document.getElementsByClassName('searchfocus').value ={item};navigate(`/search/${item}`);}} className="my-2 pl-5 px-2 cursor-pointer hover:text-red-500 font-normal text-base">{item}</p>
             )
-          })}
+          })} 
         </div>
       </div>}
     </div>

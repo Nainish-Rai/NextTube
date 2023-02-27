@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import dummy from "./relateddummy.json";
-import VideoCard from "./VideoCard";
-import RelatedCard from "./RelatedCard";
+import dummy from "../components/relateddummy.json";
+import VideoCard from "../components/VideoCard";
+import RelatedCard from "../components/RelatedCard";
 import { api } from "../utils/api";
 
 const RelatedVideos = ({data}) => {

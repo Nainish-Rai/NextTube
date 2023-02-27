@@ -47,7 +47,7 @@ console.log(data)
                 viewCount={item.viewCount}
                 publishText={item.publishedText}
                 lengthText={item.lengthSeconds}
-                thumbnail={item.videoThumbnails[3].url}
+                thumbnail={item.videoThumbnails[4].url}
                 // channelThumbnail={item.channelThumbnail[0].url}
               />
             );

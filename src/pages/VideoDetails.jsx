@@ -3,8 +3,8 @@ import ReactPlayer from "react-player";
 import VideoInfo from "../components/VideoInfo";
 import dummy from "../components/dummyvideo.json";
 import "./VideoDetails.css";
-import RelatedVideos from "../components/RelatedVideos";
-import CommentSection from "../components/CommentSection";
+import RelatedVideos from "../containers/RelatedVideos";
+import CommentSection from "../containers/CommentSection";
 import { api } from "../utils/api";
 import { useParams } from "react-router-dom";
 const VideoDetails = () => {

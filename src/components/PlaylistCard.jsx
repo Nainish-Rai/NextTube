@@ -15,6 +15,7 @@ const PlaylistCard = ({
   videoCount,
   channelThumbnail,
 }) => {
+  console.log(playData)
   const navigate = useNavigate();
   const handlePlaylistClick = (id) => {
     navigate(`/playlist/${playId}`);
@@ -34,9 +35,9 @@ const PlaylistCard = ({
         <div onClick={() => handlePlaylistClick("")} className="relative w-full">
           <img
             className="rounded-lg brightness-95  aspect-video  hover:brightness-75 duration-200 object-cover  w-full h-full relative"
-            src={thumbnail}
+            src={playData[0].videoThumbnails && playData[0].videoThumbnails[3].url}
           />
-          <div className="absolute bg-gray-800 bg-opacity-50 backdrop-blur-sm bottom-0 flex justify-center items-center font-semibold right-0 w-28 h-full z-10">{videoCount}</div>
+          <div className="absolute bg-bg-primary/40 border-l border-gray-200/50 backdrop-blur-[2px] bottom-0 flex justify-center items-center font-semibold right-0 w-28 h-full z-10">{videoCount}</div>
           <div className="absolute text-xs font-semibold rounded bg-bg bg-opacity-80 py-1 px-2 bottom-2 right-2">
             <p>{lengthText}</p>
           </div>

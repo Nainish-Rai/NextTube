@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Link, Route, useParams, Routes, useNavigate, Outlet } from "react-router-dom";
-import ChannelPlaylistSection from "../components/ChannelPlaylistSection";
+import ChannelPlaylistSection from "../containers/ChannelPlaylistSection";
 import dummy from "../components/dummychannel.json";
 import VideoCard from "../components/VideoCard";
 import { api } from "../utils/api";

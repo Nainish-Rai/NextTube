@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, BrowserRouter, useLocation, Link } from "react-router-dom";
-import SearchBar from "./SearchBar";
+import SearchBar from "../components/SearchBar";
 import SideBar from "./SideBar";
-import CategoriesSection from "./CategoriesSection";
-import FavChannelSection from "./FavChannelSection";
+import CategoriesSection from "../components/CategoriesSection";
+import FavChannelSection from "../components/FavChannelSection";
 const Navbar = () => {
   const location = useLocation();
   console.log(location.pathname);
