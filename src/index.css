@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base{
+ html{
+  font-family: 'Poppins', sans-serif;
+ }
+ a{
+  @apply text-blue-400
+ }
+}
+
+.gradient{
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(29,167,253,1) 50%, rgba(69,252,249,1) 100%); 
+}
+
+
+@layer components{
+    .center{
+      @apply flex items-center justify-center
+     }
+}

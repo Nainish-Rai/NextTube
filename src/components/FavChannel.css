@@ -1,0 +1,8 @@
+.channelcard{
+    border-radius: 50%;
+    transition-duration: 200ms;
+}
+
+.channelcard:hover{
+    border-radius: 22%;
+}
