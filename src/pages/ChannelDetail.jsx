@@ -4,11 +4,12 @@ import ChannelPlaylistSection from "../containers/ChannelPlaylistSection";
 import dummy from "../components/dummychannel.json";
 import VideoCard from "../components/VideoCard";
 import { api } from "../utils/api";
+import ChannelLatestVideos from "../containers/ChannelLatestVideos";
 
 const ChannelDetail = () => {
   const id = useParams();
   const navigate = useNavigate()
-  console.log(id);
+  // console.log(id);
 
   const [data, setData] = useState([]);
   const [videoData, setVideoData] = useState([]);
@@ -19,14 +20,14 @@ const ChannelDetail = () => {
       setVideoData(response.latestVideos);
     });
   }, [id.id]);
-  console.log(data);
+
 
 
 
   
   return (
     <div
-      className="mt-24 ml-6
+      className="mt-16 ml-4
      mx-4 p-2 flex flex-col"
     >
       {/* gradient banner */}
@@ -96,8 +97,8 @@ const ChannelDetail = () => {
         "
           ></div>
         </div>
-
-        <div className="w-full mt-12 ml-5 pl-2 flex items-center justify-between channeld">
+            {/* details */}
+        <div className="w-full mt-12 ml-5 pl-2 flex items-center justify-between channeld ">
           <div className="flex items-center">
             <div className=" h-24 w-24 rounded-full overflow-hidden">
               {data.authorThumbnails && (
@@ -137,32 +138,36 @@ const ChannelDetail = () => {
       {/* simple banner end */}
       {/* videos */}
       <div>
-        <div className="mt-10 mb-5 ml-2">
+        <div className={`mt-10 mb-5 ml-4 space-x-6 flex`}>
+          <Link to={`/channel/${id.id}`}>
+          <h2 className={`font-medium text-xl  ${!location.pathname.match(/playlistsection/) && "text-red-500"} `}>Latest Videos</h2>
+          </Link>
           <Link to={`/channel/${id.id}/playlistsection`}>
-          <h2 className="font-medium text-xl ">Latest Videos</h2>
+          <h2 className={`font-medium text-xl  ${location.pathname.match(/playlistsection/) && "text-red-500"} `}>Playlists</h2>
           </Link>
           {/* <Routes>
             <Route path="/playlist/:id" exact element={<ChannelPlaylistSection />} />
           </Routes> */}
         </div>
-        <div className="flex flex-wrap">
-          {videoData.map((item) => {
-            return (
-              <VideoCard
-                videoId={item.videoId}
-                title={item.title}
-                channelTitle={data.author}
-                channelId={id.id}
-                viewCount={item.viewCount}
-                publishText={item.publishedText}
-                lengthText={item.lengthSeconds}
-                thumbnail={item.videoThumbnails[3].url}
-                channelThumbnail={data.authorThumbnails[1].url}
-              />
-            );
-          })}
-        </div>
-    <Outlet/>  //this is used to set location of nested component route
+        {/* <ChannelLatestVideos videoData={videoData}/> */}
+     {!location.pathname.match(/playlistsection/) &&   <div className="flex flex-wrap">
+    {videoData.map((item) => {
+      return (
+        <VideoCard
+          videoId={item.videoId}
+          title={item.title}
+          channelTitle={data.author}
+          channelId={id.id}
+          viewCount={item.viewCount}
+          publishText={item.publishedText}
+          lengthText={item.lengthSeconds}
+          thumbnail={item.videoThumbnails[3].url}
+          channelThumbnail={data.authorThumbnails[1].url}
+        />
+      );
+    })}
+  </div>}
+    <Outlet context={[videoData]} />  
       </div>
     </div>
   );

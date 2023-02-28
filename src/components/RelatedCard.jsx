@@ -40,11 +40,11 @@ const RelatedCard = ({
         <div onClick={() => handleClick(videoId)}  className="py-2  text-xs font-semibold text-gray-400">
           <div className="flex justify-between items-center ">
             <h3>
-              {viewCount}
+              {viewCount} views
               {/* {viewCount < 1000000
                   ? Math.floor(viewCount / 1000) + "K"
                   : Math.floor(viewCount / 1000000) + "M"}{" "} */}
-              views
+           
             </h3>
             <h3 className="pr-1">{publishText}</h3>
           </div>

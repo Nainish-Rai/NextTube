@@ -18,7 +18,7 @@ const VideoList = ({ data }) => {
                 viewCount={item.viewCount}
                 publishText={item.publishedText}
                 lengthText={item.lengthSeconds}
-                thumbnail={item.videoThumbnails && item.videoThumbnails[4].url}
+                thumbnail={item.videoThumbnails && item.videoThumbnails[2].url}
                 // channelThumbnail={item.channelThumbnail[0].url}
               />
             );
@@ -42,13 +42,13 @@ const VideoList = ({ data }) => {
             return (
               <ChannelCard
                 title={item.author}
-                // channelTitle={item.author}
-                channelId={item.authorId}
+                author={item.author}
+                authorId={item.authorId}
                 subCount={item.subCount}
-                playData={item.videos}
-                description={item.description}
+                videoCount={item.videoCount}
+                description={item.description && item.description}
                 // lengthText={item.lengthSeconds}
-                thumbnail={item.authorThumbnails && item.authorThumbnails[4].url}
+                thumbnail={item.authorThumbnails[0].url? item.authorThumbnails[0].url: item.authorThumbnails[1].url}
                 // channelThumbnail={item.channelThumbnail[0].url}
               />
             );

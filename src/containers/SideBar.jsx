@@ -16,6 +16,7 @@ import {
 } from "../utils/icons";
 import SidebarExploreSection from "../components/SidebarExploreSection";
 import { Link } from "react-router-dom";
+import MiniSideBarItem from "../components/MiniSideBarItem";
 const SideBar = () => {
   const [mini, setMini] = useState(true);
   function handleClick() {
@@ -31,7 +32,7 @@ const SideBar = () => {
         mini ? "w-fit" : "w-56"
       } px-1 ml-2 z-0 flex flex-col gap-5 border-r border-gray-200  text-teal-50 `}
     >
-      <div onClick={handleClick} className="-mt-7 ml-4 flex ">
+      <div onClick={handleClick} className="-mt-8 ml-0 flex ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -47,6 +48,17 @@ const SideBar = () => {
           />
         </svg>
       </div>
+      {/* {mini && !location.pathname.match(/video/) &&(
+
+        <div className="flex flex-col justify-center gap-5">
+            <MiniSideBarItem title={"Home"} icon={ ''} />
+            <MiniSideBarItem title={"Shorts"} icon={ ''} />
+            <MiniSideBarItem title={"Subs"} icon={ ''} />
+            <MiniSideBarItem title={"Library"} icon={ ''} />
+        </div>
+
+      ) 
+      } */}
       {!mini && (
         <div className="openedsidebar flex flex-col px-1 overflow-y-auto min-h-screen w-full scrollbar-hide pr-6 pt-5 border-r border-gray-200/20  ">
           <div className="sections my-4">

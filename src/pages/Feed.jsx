@@ -4,6 +4,8 @@ import VideoCard from "../components/VideoCard";
 import "./Feed.css";
 import xdata from "../components/Trending.json";
 import { api } from "../utils/api";
+import CategoriesSection from "../components/CategoriesSection";
+import FavChannelSection from "../components/FavChannelSection";
 
 const Feed = () => {
   const dummy = xdata;
@@ -15,28 +17,18 @@ useEffect(()=>{
 },[])
 console.log(data)
    
-  // useEffect(()=>{
-  //   const options = {
-  //     method: 'GET',
-  //     headers: {
-  //       'X-RapidAPI-Key': 'f9cfa79e0fmsh8dd788ab27668c8p13655ajsnc142bee1819e',
-  //       'X-RapidAPI-Host': 'youtube-v3-alternative.p.rapidapi.com'
-  //     }
-  //   };
 
-  //   fetch('https://youtube-v3-alternative.p.rapidapi.com/trending?geo=US&lang=en', options)
-  //     .then(response => response.json())
-  //     .then(response => {setData(response.data)
-  //     console.log("hihi")
-  //     })
-  //     .catch(err => console.error(err));
-
-  // },[hai])
 
   return (
     <div className="z-0">
-      <div className="z-0 rounded-2xl mt-24 ml-1 overflow-hidden">
-        <div className="flex flex-wrap p-1 pr-2">
+      <div className="z-20 rounded-2xl mt-10 ml-1 overflow-hidden">
+      {location.pathname.match(/video/)? null : (
+          <div className="categoriesbar w-full mt-4 text-gray-400 flex space-x-14  px-5 items-center  py-1 z-0 tracking-wide pl-6  ">
+            <CategoriesSection />
+            <FavChannelSection />
+          </div>
+        )}
+        <div className="flex flex-wrap p-1 pr-2 ">
           {data.map((item) => { 
             return ( item.lengthSeconds > 60  &&
               <VideoCard
@@ -47,7 +39,7 @@ console.log(data)
                 viewCount={item.viewCount}
                 publishText={item.publishedText}
                 lengthText={item.lengthSeconds}
-                thumbnail={item.videoThumbnails[4].url}
+                thumbnail={item.videoThumbnails[3].url}
                 // channelThumbnail={item.channelThumbnail[0].url}
               />
             );

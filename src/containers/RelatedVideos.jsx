@@ -8,25 +8,7 @@ const RelatedVideos = ({data}) => {
   
   // console.log(data)
   // const [data,setData] = useState([])
-  // useEffect(()=>{
-  //   api(`videos/${id}`).then((response)=>{
-  //     setData(response)
-  //   })
-  //  },[id])
-  // useEffect(()=>{
-  //   const options = {
-  //     method: 'GET',
-  //     headers: {
-  //       'X-RapidAPI-Key': '0ada2dc1d0msha85c863c3551884p15cc83jsn1411fd169d03',
-  //       'X-RapidAPI-Host': 'youtube-v3-alternative.p.rapidapi.com'
-  //     }
-  //   };
-    
-  //   fetch(`https://youtube-v3-alternative.p.rapidapi.com/related?id=${id.id}&geo=IN`, options)
-  //     .then(response => response.json())
-  //     .then(response => setData(response.data))
-  //     .catch(err => console.error(err));
-  // },[id])
+ 
   if(data){
     
   

@@ -56,12 +56,12 @@ const VideoCard = ({
             </div>
             <div
               onClick={() => handleChannelClick(channelId)}
-              className=" flex gap-2 items-center mt-2"
+              className=" flex gap-2 items-center mt-2 "
             >
               {channelThumbnail && (
                 <img className="w-5 rounded-md" src={channelThumbnail} alt="" />
               )}
-              <h2 className="text-gray-300 font-semibold ">{channelTitle}</h2>
+              <h2 className="text-gray-300 font-semibold hover:text-gray-500 ">{channelTitle}</h2>
               <img
                 src={checkicon}
                 className=" bg-gray-200 w-3 rounded-full p-[1px]"

@@ -13,16 +13,7 @@ const SearchBar = () => {
   const [suggestions,setSuggestions]=useState([])
   const [suggestionsToggle,setSuggestionsToggle]=useState(false)
 
-//   window.onclick = e => {
-//     console.log(e.target.innerText);  // to get the element
-//     // console.log(e.target.tagName);  // to get the element tag name alone
-// } 
-//   // const toggleSuggestionMenu = (e)=>{
-//   //   if(suggestionMenu.current && suggestionsToggle && !suggestionMenu.current.contains(e.target)){
-//   //     setSuggestionsToggle("")
-//   //   }
-//   // }
-  // document.addEventListener('mousedown',()=>{setSuggestionsToggle(false)})
+
   useEffect(()=>{
     api(`search/suggestions?q=${searchTerm}`).then((response)=>{
       setSuggestions(response.suggestions)

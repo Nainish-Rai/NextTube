@@ -73,9 +73,9 @@ const PlaylistPage = () => {
               </div>
               {/*  */}
               <div className="mt-7">
-                <p className="font-medium text-xs opacity-90">
+               {data.description && <p className="font-medium text-xs opacity-90">
                   {data.description.substring(0,300)}
-                </p>
+                </p>}
               </div>
               {/* wrapper divend */}
             </div>

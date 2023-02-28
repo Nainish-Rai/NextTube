@@ -11,6 +11,7 @@ import VideoDetails from "./pages/VideoDetails";
 import DummySidebar from "./components/DummySidebar";
 import PlaylistPage from "./pages/PlaylistPage";
 import ChannelPlaylistSection from "./containers/ChannelPlaylistSection";
+import ChannelLatestVideos from "./containers/ChannelLatestVideos";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
                 <Route path="/playlist/:id" exact element={<PlaylistPage />} />
                 <Route path="/video/:id" exact element={<VideoDetails />} />
                 <Route path="/channel/:id" exact element={<ChannelDetail />} >
+                <Route path="/channel/:id/latestvideos" element={<ChannelLatestVideos/>}/>
                   <Route path="/channel/:id/playlistsection" element={<ChannelPlaylistSection/>}/>
                 </Route>
               </Routes>

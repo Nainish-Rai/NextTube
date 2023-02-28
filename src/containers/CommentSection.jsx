@@ -15,24 +15,7 @@ const CommentSection = (videoId) => {
     
     })
    },[videoId.videoId])
-  // useEffect(() => {
-  //   const options = {
-  //     method: 'GET',
-  //     headers: {
-  //       'X-RapidAPI-Key': '0ada2dc1d0msha85c863c3551884p15cc83jsn1411fd169d03',
-  //       'X-RapidAPI-Host': 'youtube-v3-alternative.p.rapidapi.com'
-  //     }
-  //   };
-    
-  //   fetch(`https://youtube-v3-alternative.p.rapidapi.com/comments?id=${videoId.videoId}`, options)
-  //     .then(response => response.json())
-  //     .then(response => {
-  //       setCommentData(response.data)
-  //       setCommentCount(response.commentsCount)
 
-  //     })
-  //     .catch(err => console.error(err))
-  // }, [videoId.videoId]);
 
   if(data){
   return (
