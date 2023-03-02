@@ -37,7 +37,9 @@ const VideoDetails = () => {
         type: "video/webm",
         size: 720,
       },
+      
     ],
+    poster: data.videoThumbnails && data.videoThumbnails[3].url,
   };
 
   const videoOptions = {
@@ -87,7 +89,7 @@ const VideoDetails = () => {
                 author={data.author}
                 description={data &&
                   data.descriptionHtml
-                    ? data.descriptionHtml
+                    ? data.descriptionHtml.innerHtml?data.descriptionHtml:data.description
                     : data.description
                 }
                 // description={data.description && data.description}

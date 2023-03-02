@@ -8,12 +8,14 @@
 
 <body>
 <!-- remove `controls` attribute if you're designing a custom UI -->
-<video id="player" playsinline controls data-poster="/path/to/poster.jpg">
-  <source src="https://piped.video/watch?v=RPiXj1t4wRQ" type="video/mp4" />
-
-
-  <!-- Captions are optional -->
-  <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default />
+<div class="plyr__video-embed" id="player">
+  <iframe
+    src="https://www.youtube.com/embed/V4D49YYihQI?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+    allowfullscreen
+    allowtransparency
+    allow="autoplay"
+  ></iframe>
+</div>
 </video>
 
 </body>
