@@ -4,7 +4,7 @@ import "./Categories.css"
 import { Link } from 'react-router-dom'
 const CategoriesSection = () => {
   return (
-    <div className="md:flex items-center xl:max-w-[60%] max-w-[40%] hidden  overflow-x-scroll space-x-14 scrollbar-hide md:pl-0 pl-5 pr-5">
+    <div className="xl:flex items-center xl:max-w-[60%] shrink max-w-[40%] hidden  overflow-x-scroll space-x-14 scrollbar-hide md:pl-0 pl-5 md:pr-5">
     <Link to="/"><Categories title="All" id='' handleClick="" /></Link>
     <Categories title="Trending" id="Trending" handleClick="" />
     <Categories title="Music" id="music"  handleClick="" />
