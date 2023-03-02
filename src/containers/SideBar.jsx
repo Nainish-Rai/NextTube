@@ -60,7 +60,7 @@ const SideBar = () => {
       ) 
       } */}
       {!mini && (
-        <div className="openedsidebar flex flex-col px-1 overflow-y-auto min-h-screen w-full scrollbar-hide pr-6 pt-5 border-r border-gray-200/20  ">
+        <div className="openedsidebar hidden lg:flex flex-col px-1 overflow-y-auto min-h-screen w-full scrollbar-hide pr-6 pt-5 border-r border-gray-200/20  ">
           <div className="sections my-4">
             <div className="flex flex-col gap-2">
               <Link to="/">

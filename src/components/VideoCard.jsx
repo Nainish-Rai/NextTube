@@ -21,16 +21,16 @@ const VideoCard = ({
   };
 
   return (
-    <div className="w-full xl:w-1/4 lg:w-1/4 md:w-1/3 sm:w-1/2 p-3 cursor-pointer">
+    <div className="w-full xl:w-1/4 lg:w-1/4 md:w-1/3 sm:w-1/2 sm:p-2 lg:p-3 cursor-pointer py-2 md:py-2">
       {/* <Link to="/video/:id"> */}
       <div
-        className="wrapper rounded-lg overflow-hidden hover:opacity-75
+        className="wrapper sm:rounded-lg overflow-hidden hover:opacity-75
       duration-150 "
       >
         {/* thumbnail */}
         <div onClick={() => handleClick(videoId)} className="relative w-full shadow-lg">
           <img
-            className="rounded-lg brightness-100 relative  aspect-video  hover:brightness-75 duration-200 object-cover  w-full h-full"
+            className="sm:rounded-lg brightness-100 relative  aspect-video  hover:brightness-75 duration-200 object-cover  w-full h-full"
             src={thumbnail}
           />
         {lengthText!="0" &&  <div className="absolute text-xs font-semibold rounded bg-bg bg-opacity-80 py-1 px-2 bottom-2 right-2">
@@ -38,7 +38,7 @@ const VideoCard = ({
           </div>}
         </div>
         {/* videocard details */}
-        <div className="py-2  text-xs font-semibold text-gray-400">
+        <div className="py-2 px-2 md:px-0  text-xs font-semibold text-gray-400">
           <div className="flex justify-between items-center ">
             <h3>
               {viewCount < 1000000

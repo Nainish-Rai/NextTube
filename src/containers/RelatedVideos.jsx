@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import dummy from "../components/relateddummy.json";
+
 import VideoCard from "../components/VideoCard";
 import RelatedCard from "../components/RelatedCard";
 import { api } from "../utils/api";
@@ -15,7 +15,7 @@ const RelatedVideos = ({data}) => {
   return (
     <div className="" >
         <h2 className="ml-3 font-medium">Related Videos</h2>
-      <div className="flex flex-col">
+      <div className="flex flex-wrap lg:flex-col">
         {data.map((item) => {
           return (
             <RelatedCard

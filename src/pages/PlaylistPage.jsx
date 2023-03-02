@@ -17,10 +17,10 @@ const PlaylistPage = () => {
   }, [id.id]);
   console.log(data);
   return (
-    <div className="flex mt-24 p-2 md:ml-14 sm:ml-5">
+    <div className="flex mt-16 lg:p-2  lg:ml-5">
       {/* left */}
-      {screen.width > 500 && (
-        <div className="w-1/4 h-[85%] fixed rounded-xl overflow-hidden ml-6">
+    
+        <div className="w-1/4 h-[85%] fixed hidden lg:block rounded-xl overflow-hidden ml-6 ">
           {/* bg color image */}
           <img
             className="relative h-full w-full object-cover brightness-75  "
@@ -84,13 +84,13 @@ const PlaylistPage = () => {
           {/* bg-gradient blur */}
           <div className=" backdrop-blur-lg bg-gradient-to-t from-bg  absolute top-0 bottom-0 w-full"></div>
         </div>
-      )}
+  
       {/* right */}
-      <div className="w-full mx-1 ml-1 sm:w-9/12 lg:ml-[30%]">
+      <div className={`w-full mx-1 md:ml-1 lg:w-9/12 lg:ml-[30%] lg:pl-8  `}>
         <div className="ml-10 mt-2">
           <h1 className="font-thin text-4xl flex items-center">{data.title}  <span className="text-lg ml-4 pt-1"> - {data.videoCount} videos</span></h1>
         </div>
-        <div className="w-full mt-5">
+        <div className="w-full flex flex-col mt-5">
           {videosData.map((item) => {
             return (
               <PlaylistVideoCard

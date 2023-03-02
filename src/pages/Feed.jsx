@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import VideoCard from "../components/VideoCard";
 import "./Feed.css";
-import xdata from "../components/Trending.json";
 import { api } from "../utils/api";
 import CategoriesSection from "../components/CategoriesSection";
 import FavChannelSection from "../components/FavChannelSection";
 
 const Feed = () => {
-  const dummy = xdata;
+
   const [data, setData] = useState([]);
 
 
@@ -20,15 +19,18 @@ console.log(data)
 
 
   return (
-    <div className="z-0">
-      <div className="z-20 rounded-2xl mt-10 ml-1 overflow-hidden">
+    <div className=" bg-bg ">
+      <div className="rounded-2xl mt-16 md:ml-4 lg:px-2 overflow-hidden">
       {location.pathname.match(/video/)? null : (
-          <div className="categoriesbar w-full mt-4 text-gray-400 flex space-x-14  px-5 items-center  py-1 z-0 tracking-wide pl-6  ">
+          <div className="categoriesbar w-full mb-5 text-gray-400 flex  items-center  py-1 lg:pl-6 tracking-wide overflow-hidden ">
+            <div className="w-full flex flex-wrp">
+
             <CategoriesSection />
             <FavChannelSection />
+            </div>
           </div>
         )}
-        <div className="flex flex-wrap p-1 pr-2 ">
+        <div className="flex flex-wrap md:pr-2 ">
           {data.map((item) => { 
             return ( item.lengthSeconds > 60  &&
               <VideoCard

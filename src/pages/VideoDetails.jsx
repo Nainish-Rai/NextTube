@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import VideoInfo from "../components/VideoInfo";
-import dummy from "../components/dummyvideo.json";
+
 import "./VideoDetails.css";
 import RelatedVideos from "../containers/RelatedVideos";
 import CommentSection from "../containers/CommentSection";
@@ -39,6 +39,11 @@ const VideoDetails = () => {
       },
     ],
   };
+
+  const videoOptions = {
+    autoplay: true,
+    keyboard: { focused: true, global: true }
+  }
  
 
   // const adaptiveFormatsList = data.adaptiveFormats && data.adaptiveFormats
@@ -48,12 +53,12 @@ const VideoDetails = () => {
 
   if (true) {
     return (
-      <div className="mt-14 p-1 mx-auto w-full max-w-[90rem] flex justify-start gap-10 ">
+      <div className="lg:mt-14 mt-9 p-1 mx-auto w-full max-w-[90rem] flex flex-wrap justify-start gap-10 ">
         {/* Left Side */}
 
-        <div className="leftside w-full lg:w-[65%] ml-14 ">
+        <div className="leftside w-full lg:w-[65%] lg:ml-14 ">
           <div className="w-full ">
-            <div className="player-wrapper rounded-xl">
+            <div className="player-wrapper lg:rounded-xl">
               {/* <ReactPlayer
           className="react-player object-cover w-full"
             controls="true"
@@ -70,7 +75,7 @@ const VideoDetails = () => {
             
             //  source={data.dashUrl}
           /> */}
-          <Plyr  source={videoSrc}/>
+          <Plyr  source={videoSrc} options={videoOptions}/>
             </div>
           </div>
            
@@ -97,17 +102,17 @@ const VideoDetails = () => {
             )}
           </div>
           {/* comment section */}
-          <div className="">
+          <div className=" hidden lg:block">
             <CommentSection videoId={id} />
           </div>
         </div>
         {/* leftside end */}
         {/* right side start */}
-        {screen.width > 600 && (
-          <div className=" w-[20%]">
+       
+          <div className="w-full lg:w-[20%]">
             <RelatedVideos data={data.recommendedVideos} />
           </div>
-        )}
+        
         {/* right side end */}
       </div>
     );

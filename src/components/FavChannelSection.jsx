@@ -3,7 +3,7 @@ import FavChannel from './FavChannel'
 
 const FavChannelSection = () => {
   return (
-    <div className="favchannel  flex  items-center space-x-5 h-full pb-1 border-l border-gray-200/50 pl-10">
+    <div className="favchannel  flex  items-center gap-5 h-full pb-1 md:border-l border-gray-200/50 md:pl-10 pl-4">
       <h1 
       className='font-semibold text-sm pr-5'>Featured Channels</h1>
     <FavChannel channelId="UCNJcSUSzUeFm8W9P7UUlSeQ" channelThumbnail="https://yt3.googleusercontent.com/ytc/AL5GRJUXTpfOB3f9ZiAw1bX9w2MkfO24C7J9SbBkqiS1Lw=s176-c-k-c0x00ffffff-no-rj" handleClick="" />

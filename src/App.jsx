@@ -22,8 +22,8 @@ function App() {
       "
         >
           <Navbar />
-          <div className="w-full flex items-center mt-4">
-            <div className="">{screen.width > 450 && <DummySidebar />}</div>
+          <div className="w-full flex justify-center items-center mt-4">
+          <div className="hidden lg:block"> <DummySidebar /></div>
             <div className="w-full">
               <Routes>
                 <Route path="/" exact element={<Feed />} />

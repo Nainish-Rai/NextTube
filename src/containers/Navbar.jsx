@@ -8,10 +8,10 @@ const Navbar = () => {
   const location = useLocation();
   console.log(location.pathname);
   return (
-    <div className="navbar w-full mx-auto md:justify-between justify-center bg-gradient-to-t from-bg-primary/50 to-bg/70 fixed top-0 pt-2  z-30 backdrop-blur-[3px] border-b border-gray-200/30  pb-2">
+    <div className="navbar w-full mx-auto md:justify-between justify-center bg-gradient-to-t from-bg-primary/50 to-bg/70 fixed top-0 pt-2  z-30 backdrop-blur-[3px] border-b border-gray-200/30 flex-wrap pb-2">
       {/* <Link to="/">Home</Link> 
         <Link to="/video/:id">Video</Link> */}
-      <div className="navbar w-full mx-auto flex items-center justify-between px-4 ">
+      <div className="navbar mx-auto flex  items-center sm:justify-between md:px-4 ">
         <div className=" flex items-center ml-14">
           <Link className="flex items-end" to="/">
             <svg
@@ -34,10 +34,10 @@ const Navbar = () => {
 
         {/* NAVBAR RIGHT ICONS */}
 
-        {screen.width > 450 && (
+      
           <div
-            className="navrightsec items-center flex justify-around
-         w-56 mr-5 cursor-pointer "
+            className="navrightsec items-center hidden justify-around
+         w-56 mr-5 cursor-pointer lg:flex"
           >
             <svg
               viewBox="0 0 15 15"
@@ -93,10 +93,10 @@ const Navbar = () => {
               <div className="rounded-full bg-gray-200  flex items-center justify-center  aspect-square h-7 w-7 hover:opacity-60 duration-300 text-white"><a className="font-semibold  text-gray-900 text-xs" href="http://github.com/nainish-rai" target="_blank">NR</a></div>
             </div>
           </div>
-        )}
+        
       </div>
 
-      <div className="flex max-h-0">
+      <div className="flex max-h-0 ">
         <SideBar />
         {/* {location.pathname.match(/video/)? null : (
           <div className="categoriesbar w-full mt-4 text-gray-400 flex space-x-14  px-5 items-center  py-1 z-0 tracking-wide pl-6  ">

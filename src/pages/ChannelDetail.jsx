@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {Link, Route, useParams, Routes, useNavigate, Outlet } from "react-router-dom";
 import ChannelPlaylistSection from "../containers/ChannelPlaylistSection";
-import dummy from "../components/dummychannel.json";
+
 import VideoCard from "../components/VideoCard";
 import { api } from "../utils/api";
 import ChannelLatestVideos from "../containers/ChannelLatestVideos";
@@ -27,8 +27,8 @@ const ChannelDetail = () => {
   
   return (
     <div
-      className="mt-16 ml-4
-     mx-4 p-2 flex flex-col"
+      className="sm:mt-12 mt-10  md:ml-
+     lg:mx-4 sm:p-2 flex flex-col"
     >
       {/* gradient banner */}
       {/* <div className="gradientBanner mb-16">
@@ -85,11 +85,11 @@ const ChannelDetail = () => {
       {/* simple banner start */}
       {/* banner */}
       <div>
-        <div className="banner w-full h-72 rounded-2xl overflow-hidden brightness-90 relative">
+        <div className="banner w-full sm:h-72 h-24 rounded-t-2xl  sm:overflow-hidden brightness-90 relative">
           {data.authorBanners && (
             <img
               src={data.authorBanners && data.authorBanners[1].url}
-              className="object-cover h-full"
+              className="sm:object-cover h-full"
             />
           )}
           <div
@@ -98,7 +98,7 @@ const ChannelDetail = () => {
           ></div>
         </div>
             {/* details */}
-        <div className="w-full mt-12 ml-5 pl-2 flex items-center justify-between channeld ">
+        <div className="mt-12 ml-5 pl-2 flex items-center justify-between channeld flex-wrap  ">
           <div className="flex items-center">
             <div className=" h-24 w-24 rounded-full overflow-hidden">
               {data.authorThumbnails && (
@@ -130,11 +130,11 @@ const ChannelDetail = () => {
               Total Views : {data.totalViews}
             </div> */}
           </div>
-          <div className=" cursor-pointer hover:opacity-90 bg-red-500 p-2 px-8 rounded-full center mr-14">
+          <div className=" cursor-pointer hover:opacity-90 bg-red-500 p-2 px-8 rounded-full center md:mr-14 mt-10 md:mt-0">
             <h3 className="font-medium text-gray-300">Subscribe</h3>
           </div>
         </div>
-      </div>
+      </div> 
       {/* simple banner end */}
       {/* videos */}
       <div>

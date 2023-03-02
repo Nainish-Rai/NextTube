@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import VideoCard from "../components/VideoCard";
 import "./Feed.css";
 import { api } from "../utils/api";
-import xdata from "../components/Trending.json";
 import VideoList from "../containers/VideoList";
 
 const SearchFeed = () => {
@@ -23,7 +22,7 @@ const SearchFeed = () => {
   return (
     <div className=" bg-bg ">
       
-      <div className="rounded-2xl mt-16 md:ml-4 sm:px-2 overflow-hidden">
+      <div className="rounded-2xl mt-16 lg:ml-4  overflow-hidden">
         <div className="p-2 ml-5"><p className=" text-base font-medium ">Search results for <span className=" text-red-500 "> {searchTerm}</span></p></div>
         <div className="flex flex-wrap p-2">
        <VideoList data={data}/>

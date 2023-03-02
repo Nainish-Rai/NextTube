@@ -17,7 +17,7 @@ const PlaylistVideoCard = ({title,videoId,author,authorId,authorUrl,thumbnail,in
       {/* <Link to="/video/:id"> */}
       <div
         className="wrapper rounded-lg overflow-hidden
-      duration-150 flex items-center justify-start gap-6 h-24 pl-5 "
+      duration-150 flex items-center  gap-6 h-24 pl-5 "
       >
             <div>
                 {index+1}
@@ -34,7 +34,7 @@ const PlaylistVideoCard = ({title,videoId,author,authorId,authorUrl,thumbnail,in
           </div>
         </div>
         {/* videocard details */}
-        <div className="py-2 self-start text-xs font-semibold text-gray-400">
+        <div className="py-2 max-w-[70%] text-xs  font-semibold text-gray-400">
           {/* <div className="flex justify-between items-center ">
             <h3>
               {viewCount < 1000000

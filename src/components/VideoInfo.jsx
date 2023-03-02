@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import channeldata from "./dummychannel.json";
+
 import { api } from "../utils/api";
-import parse from 'html-react-parser';
+
 import { useNavigate } from "react-router-dom";
 const VideoInfo = ({
   id,
@@ -29,7 +29,7 @@ const VideoInfo = ({
   // let desc = parse(`${description}`)
   if (true) {
     return (
-      <div className="p-1 mt-4">
+      <div className="p-2 sm:p-4 lg:p-1 mt-4">
         <div className="flex justify-between font-medium opacity-70 text-sm">
           <p>Uploaded {publishedText}</p>
           {viewCount!=0 &&<p>
