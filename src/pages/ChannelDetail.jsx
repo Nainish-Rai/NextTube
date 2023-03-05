@@ -93,7 +93,7 @@ const ChannelDetail = () => {
             />
           )}
           <div
-            className="blurgrad absolute top-0 bottom-0 left-0 right-0 w-full h-full bg-gradient-to-t from-bg-secondary
+            className="blurgrad absolute top-0 bottom-0 left-0 right-0 w-full h-full bg-gradient-to-t from-black
         "
           ></div>
         </div>

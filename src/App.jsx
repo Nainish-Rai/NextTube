@@ -16,7 +16,7 @@ import ChannelLatestVideos from "./containers/ChannelLatestVideos";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App h-full w-full text-slate-200 bg-bg">
+      <div className="App h-full w-full text-slate-200 bg-black">
         <div
           className="w-full  
       "

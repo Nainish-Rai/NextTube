@@ -19,11 +19,11 @@ console.log(data)
 
 
   return (
-    <div className=" bg-bg ">
+    <div className=" bg-black ">
       <div className="rounded-2xl mt-16 md:ml-4 lg:px-2 overflow-hidden">
       {location.pathname.match(/video/)? null : (
           <div className="categoriesbar mb-5 text-gray-400 flex  items-center  py-1 lg:pl-6 tracking-wide overflow-hidden ">
-            <div className=" flex flex-wrap">
+            <div className=" flex flex-wrap gap-8">
 
             <CategoriesSection />
             <FavChannelSection />

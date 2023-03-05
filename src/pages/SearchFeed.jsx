@@ -20,7 +20,7 @@ const SearchFeed = () => {
   
   if(data){
   return (
-    <div className=" bg-bg ">
+    <div className=" bg-black ">
       
       <div className="rounded-2xl mt-16 lg:ml-4  overflow-hidden">
         <div className="p-2 ml-5"><p className=" text-base font-medium ">Search results for <span className=" text-red-500 "> {searchTerm}</span></p></div>
@@ -31,7 +31,7 @@ const SearchFeed = () => {
     </div>
   );}else{
     return(
-      <div className=" h-screen bg-bg
+      <div className=" h-screen bg-black
       
     "></div>
     )

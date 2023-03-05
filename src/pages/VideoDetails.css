@@ -15,3 +15,7 @@
   --plyr-menu-background: rgb(22, 22, 22);
   --plyr-menu-color: rgba(255, 255, 255, 0.832);
 }
+
+video {
+	width: 100%;
+}

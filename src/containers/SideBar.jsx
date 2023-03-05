@@ -18,7 +18,7 @@ import SidebarExploreSection from "../components/SidebarExploreSection";
 import { Link } from "react-router-dom";
 import MiniSideBarItem from "../components/MiniSideBarItem";
 const SideBar = () => {
-  const [mini, setMini] = useState(true);
+  const [mini, setMini] = useState(false);
   function handleClick() {
     let dummysidebar = document.getElementsByClassName("dummysidebar")[0].style;
     console.log(dummysidebar);
