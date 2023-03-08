@@ -25,7 +25,7 @@ const PlaylistCard = ({
   };
 
   return (
-    <div className="w-full xl:w-1/4 lg:w-1/4 md:w-1/3 p-3 cursor-pointer">
+    <div className="w-full xl:w-1/4 lg:w-1/4 min-[700px]:w-1/3 md:w-1/2 p-3 cursor-pointer">
       {/* <Link to="/video/:id"> */}
       <div
         className="wrapper rounded overflow-hidden hover:opacity-75

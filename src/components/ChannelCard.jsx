@@ -12,7 +12,7 @@ const ChannelCard = ({
   const navigate = useNavigate()
   console.log(authorId)
   return (
-    <div onClick={()=>navigate(`/channel/${authorId}`)} className="w-full xl:w-1/4 lg:w-1/4 md:w-1/3 p-3">
+    <div onClick={()=>navigate(`/channel/${authorId}`)} className="w-full xl:w-1/4 lg:w-1/4 min-[700px]:w-1/3 md:w-1/2 p-3">
       {/* <h3 className="font-medium text-2xl ml-5 mb-5">Channel</h3> */}
       <div  className="bg-gray-600/10 hover:bg-gray-600/10 w-full h-full  cursor-pointer  rounded-xl flex flex-col  justify-center items-center" >
       <div className="w-full pl-5 flex items-center justify-evenly ">
