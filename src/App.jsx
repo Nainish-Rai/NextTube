@@ -12,7 +12,7 @@ import DummySidebar from "./components/DummySidebar";
 import PlaylistPage from "./pages/PlaylistPage";
 import ChannelPlaylistSection from "./containers/ChannelPlaylistSection";
 import ChannelLatestVideos from "./containers/ChannelLatestVideos";
-
+import ScrollToTop from "./utils/ScrollToTop";
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +21,7 @@ function App() {
           className="w-full  
       "
         >
+          <ScrollToTop/>
           <Navbar />
           <div className="w-full flex justify-center items-center mt-4">
           <div className="hidden lg:block"> <DummySidebar /></div>

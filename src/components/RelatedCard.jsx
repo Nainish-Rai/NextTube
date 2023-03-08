@@ -21,7 +21,7 @@ const RelatedCard = ({
   };
 
   return (
-    <div className="w-full md:w-1/2 lg:w-full p-3 cursor-pointer">
+    <div className="w-full min-[700px]:w-1/3 md:w-1/2 lg:w-full p-3 cursor-pointer">
       <div
    
         className="wrapper rounded-lg overflow-hidden hover:opacity-75
