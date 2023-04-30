@@ -161,7 +161,7 @@ const ChannelDetail = () => {
           viewCount={item.viewCount}
           publishText={item.publishedText}
           lengthText={item.lengthSeconds}
-          thumbnail={item.videoThumbnails[3].url}
+          thumbnail={item.videoThumbnails[4].url}
           channelThumbnail={data.authorThumbnails[1].url}
         />
       );

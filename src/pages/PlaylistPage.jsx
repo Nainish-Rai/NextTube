@@ -82,7 +82,7 @@ const PlaylistPage = () => {
             {/* wrapperendd */}
           </div>
           {/* bg-gradient blur */}
-          <div className=" backdrop-blur-lg bg-gradient-to-t from-bg  absolute top-0 bottom-0 w-full"></div>
+          <div className=" backdrop-blur-lg bg-gradient-to-t from-black  absolute top-0 bottom-0 w-full"></div>
         </div>
   
       {/* right */}

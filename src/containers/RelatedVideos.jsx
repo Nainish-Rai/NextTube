@@ -26,7 +26,7 @@ const RelatedVideos = ({data}) => {
               viewCount={item.viewCountText}
               // publishText={item.publishedTimeText}
               lengthText={item.lengthSeconds}
-              thumbnail={item.videoThumbnails && item.videoThumbnails[3].url}
+              thumbnail={item.videoThumbnails && item.videoThumbnails[4].url}
               // channelThumbnail={item.authorThumbnail}
             />
           );

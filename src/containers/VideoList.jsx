@@ -18,7 +18,7 @@ const VideoList = ({ data }) => {
                 viewCount={item.viewCount}
                 publishText={item.publishedText}
                 lengthText={item.lengthSeconds}
-                thumbnail={item.videoThumbnails && item.videoThumbnails[2].url}
+                thumbnail={item.videoThumbnails && item.videoThumbnails[3].url}
                 // channelThumbnail={item.channelThumbnail[0].url}
               />
             );
