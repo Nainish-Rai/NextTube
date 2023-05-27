@@ -40,14 +40,14 @@ const VideoDetails = () => {
     sources: [
       {
         src:
-          data.formatStreams &&
+          data &&
           data.formatStreams[data.formatStreams.length - 2].url,
         type: "video/mp4",
         size: 360,
       },
       {
         src:
-          data.formatStreams &&
+          data &&
           data.formatStreams[data.formatStreams.length - 1].url,
         type: "video/webm",
         size: 720,
