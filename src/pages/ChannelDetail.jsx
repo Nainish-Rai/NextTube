@@ -1,29 +1,37 @@
 import React, { useEffect, useState } from "react";
-import {Link, Route, useParams, Routes, useNavigate, Outlet } from "react-router-dom";
+import {
+  Link,
+  Route,
+  useParams,
+  Routes,
+  useNavigate,
+  Outlet,
+} from "react-router-dom";
 import ChannelPlaylistSection from "../containers/ChannelPlaylistSection";
 
 import VideoCard from "../components/VideoCard";
 import ChannelLatestVideos from "../containers/ChannelLatestVideos";
+import useApi from "../utils/useApi";
+import useSWR from "swr";
+import SkeletonVideoList from "../components/Placeholders/SkeletonVideoList";
+import SkeletonChannelDetails from "../components/Placeholders/SkeletonChannelDetails";
 
 const ChannelDetail = () => {
   const id = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // console.log(id);
 
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [videoData, setVideoData] = useState([]);
 
   useEffect(() => {
-    api(`channels/${id.id}`).then((response) => {
-      setData(response);
-      setVideoData(response.latestVideos);
-    });
+    data && setVideoData(data.latestVideos);
   }, [id.id]);
+  const { data, isLoading, isError } = useApi(`channels/${id.id}`);
 
+  if (isError) return "An error has occurred.";
+  if (isLoading) return <SkeletonChannelDetails />;
 
-
-
-  
   return (
     <div
       className="sm:mt-12 mt-10  md:ml-
@@ -96,7 +104,7 @@ const ChannelDetail = () => {
         "
           ></div>
         </div>
-            {/* details */}
+        {/* details */}
         <div className="mt-12 ml-5 pl-2 flex items-center justify-between channeld flex-wrap  ">
           <div className="flex items-center">
             <div className=" h-24 w-24 rounded-full overflow-hidden">
@@ -133,40 +141,54 @@ const ChannelDetail = () => {
             <h3 className="font-medium text-gray-300">Subscribe</h3>
           </div>
         </div>
-      </div> 
+      </div>
       {/* simple banner end */}
       {/* videos */}
       <div>
         <div className={`mt-10 mb-5 ml-4 space-x-6 flex`}>
           <Link to={`/channel/${id.id}`}>
-          <h2 className={`font-medium text-xl  ${!location.pathname.match(/playlistsection/) && "text-red-500"} `}>Latest Videos</h2>
+            <h2
+              className={`font-medium text-xl  ${
+                !location.pathname.match(/playlistsection/) && "text-red-500"
+              } `}
+            >
+              Latest Videos
+            </h2>
           </Link>
           <Link to={`/channel/${id.id}/playlistsection`}>
-          <h2 className={`font-medium text-xl  ${location.pathname.match(/playlistsection/) && "text-red-500"} `}>Playlists</h2>
+            <h2
+              className={`font-medium text-xl  ${
+                location.pathname.match(/playlistsection/) && "text-red-500"
+              } `}
+            >
+              Playlists
+            </h2>
           </Link>
           {/* <Routes>
             <Route path="/playlist/:id" exact element={<ChannelPlaylistSection />} />
           </Routes> */}
         </div>
         {/* <ChannelLatestVideos videoData={videoData}/> */}
-     {!location.pathname.match(/playlistsection/) &&   <div className="flex flex-wrap">
-    {videoData.map((item) => {
-      return (
-        <VideoCard
-          videoId={item.videoId}
-          title={item.title}
-          channelTitle={data.author}
-          channelId={id.id}
-          viewCount={item.viewCount}
-          publishText={item.publishedText}
-          lengthText={item.lengthSeconds}
-          thumbnail={item.videoThumbnails[4].url}
-          channelThumbnail={data.authorThumbnails[1].url}
-        />
-      );
-    })}
-  </div>}
-    <Outlet context={[videoData]} />  
+        {!location.pathname.match(/playlistsection/) && (
+          <div className="flex flex-wrap">
+            {data.latestVideos.map((item) => {
+              return (
+                <VideoCard
+                  videoId={item.videoId}
+                  title={item.title}
+                  channelTitle={data.author}
+                  channelId={id.id}
+                  viewCount={item.viewCount}
+                  publishText={item.publishedText}
+                  lengthText={item.lengthSeconds}
+                  thumbnail={item.videoThumbnails[4].url}
+                  channelThumbnail={data.authorThumbnails[1].url}
+                />
+              );
+            })}
+          </div>
+        )}
+        <Outlet context={[videoData]} />
       </div>
     </div>
   );

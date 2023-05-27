@@ -6,6 +6,7 @@ import "./Feed.css";
 import VideoList from "../containers/VideoList";
 import useApi from "../utils/useApi";
 import SkeletonVideoCard from "../components/Placeholders/SkeletonVideoCard";
+import SkeletonVideoList from "../components/Placeholders/SkeletonVideoList";
 
 const SearchFeed = () => {
   const { searchTerm } = useParams();
@@ -31,23 +32,7 @@ const SearchFeed = () => {
               <span className=" text-red-500 "> {searchTerm}</span>
             </p>
           </div>
-          <div className="flex flex-wrap lg:ml-1 md:px-2 ">
-            <SkeletonVideoCard />
-            <SkeletonVideoCard />
-            <SkeletonVideoCard />
-            <SkeletonVideoCard />
-            <SkeletonVideoCard />
-            <SkeletonVideoCard />
-            <SkeletonVideoCard />
-            <SkeletonVideoCard />
-            <SkeletonVideoCard />
-            <SkeletonVideoCard />
-            <SkeletonVideoCard />
-            <SkeletonVideoCard />
-            <SkeletonVideoCard />
-            <SkeletonVideoCard />
-            <SkeletonVideoCard />
-          </div>
+        <SkeletonVideoList/>
         </div>
       </div>
     );
