@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
-import { api } from "../utils/api";
+
 import PlaylistVideoCard from "../components/PlaylistVideoCard";
 
 const PlaylistPage = () => {

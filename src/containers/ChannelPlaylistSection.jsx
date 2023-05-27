@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useOutletContext, useParams } from 'react-router-dom'
 import PlaylistCard from '../components/PlaylistCard'
-import { api } from '../utils/api'
+
 
 
 const ChannelPlaylistSection = () => {

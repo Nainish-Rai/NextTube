@@ -3,7 +3,6 @@ import {Link, Route, useParams, Routes, useNavigate, Outlet } from "react-router
 import ChannelPlaylistSection from "../containers/ChannelPlaylistSection";
 
 import VideoCard from "../components/VideoCard";
-import { api } from "../utils/api";
 import ChannelLatestVideos from "../containers/ChannelLatestVideos";
 
 const ChannelDetail = () => {

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
-import { api } from '../utils/api'
 import VideoCard from '../components/VideoCard'
 const CategoriesPage = () => {
     const id = useParams()

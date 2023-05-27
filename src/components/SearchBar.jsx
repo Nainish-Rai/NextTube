@@ -17,7 +17,7 @@ const SearchBar = () => {
   useEffect(()=>{
     api(`search/suggestions?q=${searchTerm}`).then((response)=>{
       setSuggestions(response.suggestions)
-      // console.log(response.suggestions)
+      
     })
    },[searchTerm])
 
