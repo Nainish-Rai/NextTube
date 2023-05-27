@@ -29,7 +29,7 @@ const ChannelDetail = () => {
   }, [id.id]);
   const { data, isLoading, isError } = useApi(`channels/${id.id}`);
 
-  if (isError) return "An error has occurred.";
+  if (isError) return <div className="w-full h-screen flex justify-center items-center">"An error has occurred."</div>;
   if (isLoading) return <SkeletonChannelDetails />;
 
   return (

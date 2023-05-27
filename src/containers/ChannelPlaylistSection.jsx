@@ -1,22 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useOutletContext, useParams } from 'react-router-dom'
 import PlaylistCard from '../components/PlaylistCard'
-
+import useApi from "../utils/useApi";
+import SkeletonVideoList from '../components/Placeholders/SkeletonVideoList';
 
 
 const ChannelPlaylistSection = () => {
 
  const id = useParams()
- const [data,setData] = useState([])
- useEffect(() => {
-  api(`channels/${id.id}/playlists`).then((response) => {
-    setData(response.playlists);
-  });
-}, [id.id]);
-console.log(data)
+//  const [data,setData] = useState([])
+//  useEffect(() => {
+//   api(`channels/${id.id}/playlists`).then((response) => {
+//     setData(response.playlists);
+//   });
+// }, [id.id]);
+const { data, isLoading, isError } = useApi(`channels/${id.id}/playlists`);
+if (isError) return <div className="w-full h-screen flex justify-center items-center">"An error has occurred."</div>;
+if (isLoading)
+  return (<SkeletonVideoList/>)
+
   return (
     <div className='flex flex-wrap'>
-      {data && data.map((item)=>{
+      {data && data.playlists.map((item)=>{
         return(
           <PlaylistCard
           title={item.title}
@@ -28,7 +33,7 @@ console.log(data)
           // lengthText={item.lengthSeconds}
           thumbnail={item.playlistThumbnail && item.playlistThumbnail}
           // channelThumbnail={item.channelThumbnail[0].url}
-          playData={data}
+          playData={data.playlists}
         />
         
         )

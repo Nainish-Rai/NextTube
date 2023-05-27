@@ -5,48 +5,61 @@ import VideoInfo from "../components/VideoInfo";
 import "./VideoDetails.css";
 import RelatedVideos from "../containers/RelatedVideos";
 import CommentSection from "../containers/CommentSection";
-import { api } from "../utils/api";
 import { useParams } from "react-router-dom";
-import Plyr from "plyr-react"
-import "plyr-react/plyr.css"
-
+import Plyr from "plyr-react";
+import "plyr-react/plyr.css";
+import useApi from "../utils/useApi";
+import SkeletonRelatedVideos from "../components/Placeholders/SkeletonRelatedVideos";
+import SkeletonChannelDetails from "../components/Placeholders/SkeletonChannelDetails";
+import SkeletonVideoDetails from "../components/Placeholders/SkeletonVideoDetails";
 
 const VideoDetails = () => {
   const videoId = useParams();
   let id = videoId.id;
   // console.log(id)
 
-  const [data, setData] = useState([]);
-  console.log(data)
-  useEffect(() => {
-    api(`videos/${id}`).then((response) => {
-      setData(response);
-    });
-  }, [id]);
+  // const [data, setData] = useState([]);
+  // console.log(data)
+  // useEffect(() => {
+  //   api(`videos/${id}`).then((response) => {
+  //     setData(response);
+  //   });
+  // }, [id]);
+  const { data, isLoading, isError } = useApi(`videos/${id}`);
+  if (isError) return "An error has occurred.";
+  if (isLoading)
+    return (
+      <div  className="lg:mt-14 mt-9 p-1 mx-auto w-full max-w-[90rem] flex flex-wrap justify-start gap-10 ">
+        <SkeletonVideoDetails/>
+        <SkeletonRelatedVideos />
+      </div>
+    );
 
   const videoSrc = {
     type: "video",
     sources: [
       {
-        src: data.formatStreams && data.formatStreams[data.formatStreams.length-2].url,
+        src:
+          data.formatStreams &&
+          data.formatStreams[data.formatStreams.length - 2].url,
         type: "video/mp4",
         size: 360,
       },
       {
-        src: data.formatStreams && data.formatStreams[data.formatStreams.length-1].url,
+        src:
+          data.formatStreams &&
+          data.formatStreams[data.formatStreams.length - 1].url,
         type: "video/webm",
         size: 720,
       },
-      
     ],
     poster: data.videoThumbnails && data.videoThumbnails[3].url,
   };
 
   const videoOptions = {
     autoplay: true,
-    keyboard: { focused: true, global: true }
-  }
- 
+    keyboard: { focused: true, global: true },
+  };
 
   // const adaptiveFormatsList = data.adaptiveFormats && data.adaptiveFormats
 
@@ -77,19 +90,21 @@ const VideoDetails = () => {
             
             //  source={data.dashUrl}
           /> */}
-          <Plyr  source={videoSrc} options={videoOptions}/>
+              <Plyr source={videoSrc} options={videoOptions} />
             </div>
           </div>
-           
+
           <div>
             {data && (
               <VideoInfo
                 id={id}
                 title={data.title}
                 author={data.author}
-                description={data &&
-                  data.descriptionHtml
-                    ? data.descriptionHtml.innerHtml?data.descriptionHtml:data.description
+                description={
+                  data && data.descriptionHtml
+                    ? data.descriptionHtml.innerHtml
+                      ? data.descriptionHtml
+                      : data.description
                     : data.description
                 }
                 // description={data.description && data.description}
@@ -110,11 +125,11 @@ const VideoDetails = () => {
         </div>
         {/* leftside end */}
         {/* right side start */}
-       
-          <div className="w-full lg:w-[20%]">
-            <RelatedVideos data={data.recommendedVideos} />
-          </div>
-        
+
+        <div className="w-full lg:w-[20%]">
+          <RelatedVideos data={data.recommendedVideos} />
+        </div>
+
         {/* right side end */}
       </div>
     );
