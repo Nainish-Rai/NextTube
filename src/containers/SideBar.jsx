@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 import MiniSideBarItem from "../components/MiniSideBarItem";
 const SideBar = () => {
   const [mini, setMini] = useState(true);
-  const [color,setColor] = useState(true)
+  
   function handleClick() {
 
     setMini(() => !mini);
@@ -29,7 +29,7 @@ const SideBar = () => {
     <div
       className={`sidebar ${
         mini ? "w-[50px]" : "w-52"
-      } px-1  z-0 max-h-screen   h-screen overflow-scroll scrollbar-hide ${!color?"bg-black":"bg-bg-secondary "} ease-in-out duration-300 align-top  gap-5  text-teal-50 `}
+      } px-1  z-0 max-h-screen   h-screen overflow-scroll scrollbar-hide bg-[#101012]  ease-in-out duration-300 align-top  gap-5  text-teal-50 `}
     >
       <div onClick={handleClick} className={`mt-4 ${mini?"ml-2":"ml-5"} duration-300`}>
         <svg

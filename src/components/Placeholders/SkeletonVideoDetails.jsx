@@ -2,7 +2,7 @@ import React from "react";
 
 function SkeletonVideoDetails() {
   return (
-    <div className="w-full lg:w-[65%] lg:ml-14">
+    <div className="w-full h-screen overflow-hidden bg-black lg:w-[65%] lg:ml-14">
       <div
         role="status"
         class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 md:flex flex-col  md:items-center"
