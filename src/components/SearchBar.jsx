@@ -68,12 +68,12 @@ const SearchBar = () => {
      
     </div>
      {/* sugesstions*/}
-   {suggestionsToggle  && searchTerm && screen.width>450 && <div className="absolute backdrop-blur-[3px] bg-bg-primary/60 border border-gray-200/[15%]  w-[32%] ml-1  -bottom-60 z-30 rounded-md overflow-hidden">
+   {suggestionsToggle  && searchTerm && screen.width>450 && <div className="absolute flex flex-col-reverse backdrop-blur-[3px] bg-bg-primary/60 border border-gray-200/[15%]  w-[32%] ml-1  -bottom-[18.5rem] z-30 rounded-md overflow-hidden">
         <div>
           {suggestions.slice(0,7).map((item)=>{
             return(
               // mousedown is used beacuse it fires before onBlur in inputText so search get executed
-              <p  onMouseDown={()=>{setSearchTerm("");()=>document.querySelector('input').value={item};navigate(`/search/${item}`);}} className="my-2 pl-5 px-2 cursor-pointer hover:text-red-500 font-normal text-base">{item}</p>
+              <p  onMouseDown={()=>{setSearchTerm("");()=>document.querySelector('input').value={item};navigate(`/search/${item}`);}} className="my-2 pl-5 px-2 cursor-pointer  hover:bg-slate-300/20 duration-150 rounded mx-2 p-1 font-normal text-base">{item}</p>
             )
           })} 
         </div>
