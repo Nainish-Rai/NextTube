@@ -68,10 +68,10 @@ const VideoDetails = () => {
 
   if (true) {
     return (
-      <div className="lg:mt-14 mt-9 p-1 mx-auto w-full max-w-[90rem] flex flex-wrap justify-start gap-10 ">
+      <div className="lg:pt-20 pt-9  mx-auto w-full  flex flex-wrap bg-black h-screen overflow-scroll scrollbar-hide justify-start gap-10 ">
         {/* Left Side */}
 
-        <div className="leftside w-full lg:w-[65%] lg:ml-14 ">
+        <div className="leftside w-full lg:w-[65%] lg:ml-8 ">
           <div className="w-full ">
             <div className="player-wrapper lg:rounded-xl">
               {/* <ReactPlayer

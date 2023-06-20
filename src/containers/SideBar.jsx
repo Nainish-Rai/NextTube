@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SideBarItem from "../components/SideBarItem";
 import SideBarExploreItem from "../components/SideBarExploreItem";
 import "./SideBar.css";
@@ -19,20 +19,19 @@ import { Link } from "react-router-dom";
 import MiniSideBarItem from "../components/MiniSideBarItem";
 const SideBar = () => {
   const [mini, setMini] = useState(true);
+  const [color,setColor] = useState(true)
   function handleClick() {
-    let dummysidebar = document.getElementsByClassName("dummysidebar")[0].style;
-    console.log(dummysidebar);
-    mini ? (dummysidebar.width = "14rem") : (dummysidebar.width = "20px");
 
     setMini(() => !mini);
   }
+  
   return (
     <div
       className={`sidebar ${
-        mini ? "w-fit" : "w-56"
-      } px-1 ml-2 z-0 flex flex-col gap-5 border-r border-gray-200  text-teal-50 `}
+        mini ? "w-[50px]" : "w-52"
+      } px-1  z-0 max-h-screen   h-screen overflow-scroll scrollbar-hide ${!color?"bg-black":"bg-bg-secondary "} ease-in-out duration-300 align-top  gap-5  text-teal-50 `}
     >
-      <div onClick={handleClick} className="-mt-8 ml-0 flex ">
+      <div onClick={handleClick} className={`mt-4 ${mini?"ml-2":"ml-5"} duration-300`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -60,7 +59,7 @@ const SideBar = () => {
       ) 
       } */}
       {!mini && (
-        <div className="openedsidebar hidden lg:flex flex-col px-1 overflow-y-auto min-h-screen w-full scrollbar-hide pr-6 pt-5 border-r border-gray-200/20  ">
+        <div className="openedsidebar hidden lg:flex flex-col  overflow-y-auto overflow-x-hidden min-h-screen w-full scrollbar-hide px-4  ">
           <div className="sections my-4">
             <div className="flex flex-col gap-2">
               <Link to="/">
@@ -164,7 +163,7 @@ const SideBar = () => {
               />
             </div>
           </div>
-          <div className="uitls flex flex-col gap-2 border-t border-gray-200/50 py-6 mt-4">
+          <div className="uitls flex flex-col gap-2 border-t border-gray-200/10 py-6 mt-4">
             <SideBarItem
               icon={
                 <svg
@@ -274,7 +273,7 @@ const SideBar = () => {
             />
           </div>
           <SidebarExploreSection />
-          <div className="setting  border-t py-6 flex flex-col gap-2">
+          <div className="setting  border-t border-gray-200/10 py-6 flex flex-col gap-2">
             <SideBarItem
               icon={
                 <svg
@@ -369,7 +368,7 @@ const SideBar = () => {
               title="Send Feedback"
             />
           </div>
-          <div className="footer mb-32  border-t pt-6">
+          <div className="footer mb-32  border-gray-200/10 border-t pt-6">
             <h2>Made with Love by Nainish</h2>
             <h2>NEXTTUBE</h2>
           </div>
