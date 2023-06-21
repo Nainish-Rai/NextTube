@@ -24,9 +24,9 @@ const RelatedCard = ({
   return (
     <div className="w-full min-[700px]:w-1/3 md:w-1/2 lg:w-full p-3 cursor-pointer">
       <motion.div
-        whileHover={{ scale: 1.015, opacity: 0.7 }}
+        whileHover={{ scale: 0.99, opacity: 0.7 }}
         whileTap={{ scale: 0.95 }}
-        transition={{ duration: 0.1 }}
+        transition={{ duration: 0.1 ,type:"spring",stiffness:600,damping:20}}
         className="wrapper rounded-lg overflow-hidden  "
       >
         {/* thumbnail */}

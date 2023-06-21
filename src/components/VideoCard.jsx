@@ -25,6 +25,7 @@ const VideoCard = ({
     <motion.div 
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
+    
     transition={{
       type: "tween",
       ease: "easeInOut",
@@ -34,16 +35,15 @@ const VideoCard = ({
     >
       {/* <Link to="/video/:id"> */}
       <div
-        className="wrapper sm:rounded-2xl hover:opacity-75
-      duration-150 "
+        className="wrapper sm:rounded-2xl  "
       >
         {/* thumbnail */}
         <div
           onClick={() => handleClick(videoId)}
           className="relative w-full z-0"
         >
-          <img
-            className="sm:rounded-lg brightness-100 relative  aspect-video shadow-[0_6px_15px_5px_rgba(0,0,0,0.5)]  hover:brightness-75 duration-200 object-cover   w-full h-full"
+          <motion.img whileHover={{opacity:0.5  }}  transition={{duration:0.2}}
+            className=" brightness-100 relative lg:rounded-xl  aspect-video shadow-[0_6px_15px_5px_rgba(0,0,0,0.5)]   object-cover   w-full h-full"
             src={thumbnail}
           />
           {lengthText != "0" && (
