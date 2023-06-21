@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Route, BrowserRouter, Routes , useLocation } from "react-router-dom";
 import "./App.css";
 import ChannelDetail from "./pages/ChannelDetail";
 import Feed from "./pages/Feed";
@@ -16,7 +16,7 @@ import ScrollToTop from "./utils/ScrollToTop";
 function App() {
   return (
     <BrowserRouter>
-      <div className={`App h-full w-full text-slate-200 bg-bg-secondary`}>
+      <div className={`App h-full w-full text-slate-200 bg-[#101012]`}>
         <div
           className="w-full  
       "

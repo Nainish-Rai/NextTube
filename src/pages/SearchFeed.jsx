@@ -24,8 +24,8 @@ const SearchFeed = () => {
   if (isError) return "An error has occurred.";
   if (isLoading)
     return (
-      <div className=" bg-black ">
-        <div className="rounded-2xl mt-16 lg:ml-4  overflow-hidden">
+      <div className=" bg-black h-screen overflow-hidden">
+        <div className="rounded-2xl pt-16 lg:ml-4  overflow-hidden">
           <div className="p-2 ml-5">
             <p className=" text-base font-medium ">
               Search results for{" "}
@@ -40,7 +40,7 @@ const SearchFeed = () => {
   if (data) {
     return (
       <div className="">
-        <div className="rounded-tl-[2rem] pt-16 bg-black max-h-screen overflow-scroll scroll-pb-16">
+        <div className="rounded-tl-[2rem] pt-16 bg-black max-h-screen overflow-scroll scrollbar-hide scroll-pb-16">
           <div className="p-2 ml-8">
             <p className=" text-base font-medium ">
               Search results for{" "}

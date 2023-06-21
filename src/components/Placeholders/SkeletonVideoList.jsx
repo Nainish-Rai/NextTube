@@ -3,7 +3,7 @@ import SkeletonVideoCard from './SkeletonVideoCard'
 
 function SkeletonVideoList() {
   return (
-    <div className="flex flex-wrap lg:ml-1 md:px-2 ">
+    <div className="flex flex-wrap h-full lg:ml-1 md:px-2 ">
     <SkeletonVideoCard />
     <SkeletonVideoCard />
     <SkeletonVideoCard />

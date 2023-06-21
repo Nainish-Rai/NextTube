@@ -51,7 +51,7 @@ const Feed = () => {
     );
 
   return (
-    <div className="scrollbar-hide bg-black lg:rounded-tl-[2rem] lg:overflow-scroll lg:h-screen">
+    <div className="scrollbar-hide bg-black lg:rounded-l-[2rem] lg:overflow-scroll lg:h-screen">
       <div className="rounded-2xl  pt-16   lg:px-2 overflow-hidden">
         {/* {location.pathname.match(/video/) ? null : (
           <div className="categoriesbar mb-5 text-gray-400 flex  items-center  py-1 lg:pl-6 tracking-wide overflow-hidden ">

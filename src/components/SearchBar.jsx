@@ -1,15 +1,18 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { api } from "../utils/api";
 import { Ref } from "react";
 
 const SearchBar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   // const suggestionMenu = useRef(null)
-  const [searchTerm, setSearchTerm] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [suggestionsToggle, setSuggestionsToggle] = useState(false);
+  const [isFocus, setIsFocus] = useState(false);
 
   useEffect(() => {
     api(`search/suggestions?q=${searchTerm}`).then((response) => {
@@ -23,9 +26,8 @@ const SearchBar = () => {
     e.preventDefault();
     if (searchTerm) {
       navigate(`/search/${searchTerm}`);
-      e.value = searchTerm;
-      console.log(e);
     }
+    setSuggestionsToggle(false);
   };
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -34,17 +36,27 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="rounded-lg md:w-1/3 w-1/3 sm:ml-0 ml-10 sm:mr-0 justify-self-center">
+    <div className="rounded-lg w-full sm:ml-0 ml-10 sm:mr-0 justify-self-center">
       <div className="rounded-lg overflow-hidden searchbar w-full mr-2 sm:mr-0 flex text-slate-300 items-center relative">
-        <form onSubmit={handleSubmit} className="w-full relative">
+        <form onSubmit={handleSubmit} className="w-full">
           <input
             // ref={suggestionMenu}
             className={`searchfocus ${
-              !searchTerm ? "w-44" : "w-full"
-            } focus:outline-none active:outline-none active:border-none duration-500  rounded-xl focus:w-full bg-bg-secondary/95 font-semibold text-sm p-2 px-5 focus:pr-12 relative searchinput `}
+              !searchTerm
+                ? location.pathname.match(/video/)
+                  ? "w-full"
+                  : "w-28"
+                : "w-full"
+            } focus:outline-none active:outline-none active:border-none duration-500 focus:w-full rounded-xl  bg-bg-secondary/95 font-semibold text-sm p-2 px-5 focus:pr-12  searchinput  `}
             type="text"
-            onFocus={() => setSuggestionsToggle(true)}
-            onBlur={() => setSuggestionsToggle(false)}
+            onFocus={() => {
+              setSuggestionsToggle(true);
+              setIsFocus(true);
+            }}
+            onBlur={() => {
+              setSuggestionsToggle(false);
+              setIsFocus(false);
+            }}
             placeholder="Search..."
             onChange={(e) => {
               setSearchTerm(e.target.value);
@@ -52,11 +64,16 @@ const SearchBar = () => {
             value={searchTerm}
             onKeyDown={handleKeyDown}
           />
-       {/* <svg
+        </form>
+        <svg
           onClick={() => {
             searchTerm && navigate(`search/${searchTerm}`);
           }}
-          className="absolute top-0 right-0 duration-100 cursor-pointer "
+          className={`absolute right-5 ${
+            isFocus || searchTerm || location.pathname.match(/video/)
+              ? "null"
+              : "hidden"
+          } duration-1000  cursor-pointer `}
           viewBox="0 0 15 15"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -67,30 +84,52 @@ const SearchBar = () => {
             d="M14.5 14.5l-4-4m-4 2a6 6 0 110-12 6 6 0 010 12z"
             stroke="currentColor"
           ></path>
-        </svg> */}
-        </form>
-      
+        </svg>
       </div>
       {/* sugesstions*/}
       {suggestionsToggle && searchTerm && (
-        <div className="absolute flex flex-col-reverse backdrop-blur-[3px] bg-bg-primary/60 border border-black w-[32%] ml-1  -bottom-[18.5rem] z-50 rounded-md overflow-hidden">
-          <div>
-            {suggestions.slice(0, 7).map((item) => {
-              return (
-                // mousedown is used beacuse it fires before onBlur in inputText so search get executed
-                <p
-                  onMouseDown={() => {
-                    setSearchTerm(item);
-                    navigate(`/search/${item}`);
+        <AnimatePresence>
+          <motion.div
+            initial={{  height:0 }}
+           
+            animate={{ scale: 1 , height:300}}
+            exit={{ scale:0 }}
+            transition={{
+              type: 'spring' ,
+              stiffness: 400,
+    damping: 40,   
+               delay: 0,
+               duration: 0.3
+            }}
+             className="absolute flex flex-col backdrop-blur-[3px] bg-bg-primary/60 border border-black w-[32%] ml-1  -bottom-[18.5rem] z-50 rounded-md overflow-hidden"
+          >
+            <div>
+              <AnimatePresence>
+
+              {suggestions.slice(0, 7).map((item) => {
+                return (
+                  // mousedown is used beacuse it fires before onBlur in inputText so search get executed
+                  <motion.p 
+                  initial={{ opacity: 0  }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{
+                     duration: 0.3
                   }}
-                  className="my-2 pl-5 px-2 cursor-pointer  hover:bg-slate-300/20 duration-150 rounded-lg mx-2 p-1 font-normal text-base"
-                >
-                  {item}
-                </p>
-              );
-            })}
-          </div>
-        </div>
+                  onMouseDown={() => {
+                      setSearchTerm(item);
+                      navigate(`/search/${item}`);
+                    }}
+                    className="my-2 pl-5 px-2 cursor-pointer  hover:bg-slate-300/20 duration-150 rounded-lg mx-2 p-1 font-normal text-base"
+                    >
+                    {item}
+                  </motion.p>
+                );
+              })}
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       )}
     </div>
   );

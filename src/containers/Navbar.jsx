@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Route, BrowserRouter, useLocation, Link } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import SideBar from "./SideBar";
@@ -6,29 +7,39 @@ import CategoriesSection from "../components/CategoriesSection";
 import FavChannelSection from "../components/FavChannelSection";
 const Navbar = () => {
   const location = useLocation();
-  const [colorChange, setColorchange] = useState(false);
-  const changeNavbarColor = () => {
-    if (window.scrollY <= 25) {
-      setColorchange(true);
-    } else {
-      setColorchange(false);
-    }
+  // const [colorChange, setColorchange] = useState(false);
+  // const changeNavbarColor = () => {
+  //   if (window.scrollY <= 25) {
+  //     setColorchange(true);
+  //   } else {
+  //     setColorchange(false);
+  //   }
+  // };
+  // useEffect(() => {
+  //   changeNavbarColor();
+  //   // adding the event when scroll change background
+  //   window.addEventListener("scroll", changeNavbarColor);
+  // });
+  const [isOn, setIsOn] = useState(false);
+  const toggleSwitch = () => setIsOn(!isOn);
+  const spring = {
+    type: "spring",
+    stiffness: 400,
+    damping: 30
   };
-  useEffect(() => {
-    changeNavbarColor();
-    // adding the event when scroll change background
-    window.addEventListener("scroll", changeNavbarColor);
-  });
   return (
     <div
       className={`navbar w-full mx-auto md:justify-between  justify-center  fixed top-0   z-30  flex-wrap pb-2`}
     >
-  
-      <div className={`bg-black/70 border-black border-b backdrop-blur-[8px]  lg:rounded-tl-[2rem]  navbar mx-auto py-3  flex items-center sm:justify-start gap-6 md:px-4 `}>
+      <div
+        className={`bg-black/70 border-black border-b backdrop-blur-[8px]  ${
+          location.pathname.match(/video/) ? "null sm:justify-between "  : "lg:rounded-tl-[2rem] sm:justify-start"
+        }  navbar max-w-full py-2  flex items-center  w-full gap-10 md:px-4 `}
+      >
         <div className=" flex items-center ml-6">
           <Link className="flex items-end" to="/">
             <svg
-              className="nexticon w-8 fill-current"
+              className="nexticon w-7 fill-current"
               role="img"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
@@ -36,19 +47,22 @@ const Navbar = () => {
               <title>Norco</title>
               <path d="M11.055 2.707a.971.971 0 00-.688.387L0 16.78h4.049l7.27-9.597 1.927 5.74 1.42-1.875-2.578-7.676a.983.983 0 00-1.033-.666zM19.95 7.22l-7.27 9.597-1.927-5.74-1.42 1.875 2.578 7.676a.987.987 0 001.72.28L24 7.218z" />
             </svg>
-            <h1 className="ml-2 font-semibold text-2xl text-slate-200">
+            <h1 className="ml-2 font-semibold text-xl text-slate-200">
               Next<span className=" text-red-500">Tube</span>{" "}
             </h1>
           </Link>
         </div>
 
-        <SearchBar />
+        <motion.div className="w-[33%]" layout transition={spring}>
+          <SearchBar />
+        </motion.div>
 
         {/* NAVBAR RIGHT ICONS */}
 
-        {/* <div
-          className="navrightsec items-center hidden justify-around
-         w-56 mr-5 cursor-pointer lg:flex"
+        <div
+          className={`navrightsec items-center hidden justify-around
+         w-56  mr-16 cursor-pointer ${
+          !location.pathname.match(/video/) ? " ml-auto " : "null" } lg:flex`}
         >
           <svg
             viewBox="0 0 15 15"
@@ -82,9 +96,7 @@ const Navbar = () => {
             height="15"
           >
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M8 3h7v7h-1V4.707l-6 6-3-3-4.146 4.147-.708-.708L5 6.293l3 3L13.293 4H8V3z"
+              d="M7.5 13.5l-.354.354a.5.5 0 00.708 0L7.5 13.5zM1.536 7.536l-.354.353.354-.353zm5-5l-.354.353.354-.353zM7.5 3.5l-.354.354a.5.5 0 00.708 0L7.5 3.5zm.964-.964l-.353-.354.353.354zm-.61 10.61L1.889 7.182l-.707.707 5.964 5.965.708-.708zm5.257-5.964l-5.965 5.964.708.708 5.964-5.965-.707-.707zM6.182 2.889l.964.965.708-.708-.965-.964-.707.707zm1.672.965l.964-.965-.707-.707-.965.964.708.708zM10.964 1c-1.07 0-2.096.425-2.853 1.182l.707.707A3.037 3.037 0 0110.964 2V1zM14 5.036c0 .805-.32 1.577-.89 2.146l.708.707A4.036 4.036 0 0015 5.036h-1zm1 0A4.036 4.036 0 0010.964 1v1A3.036 3.036 0 0114 5.036h1zM4.036 2c.805 0 1.577.32 2.146.89l.707-.708A4.036 4.036 0 004.036 1v1zM1 5.036A3.036 3.036 0 014.036 2V1A4.036 4.036 0 000 5.036h1zm.89 2.146A3.035 3.035 0 011 5.036H0c0 1.07.425 2.096 1.182 2.853l.707-.707z"
               fill="currentColor"
             ></path>
           </svg>
@@ -96,10 +108,13 @@ const Navbar = () => {
             height="15"
           >
             <path
-              d="M7.5 13.5l-.354.354a.5.5 0 00.708 0L7.5 13.5zM1.536 7.536l-.354.353.354-.353zm5-5l-.354.353.354-.353zM7.5 3.5l-.354.354a.5.5 0 00.708 0L7.5 3.5zm.964-.964l-.353-.354.353.354zm-.61 10.61L1.889 7.182l-.707.707 5.964 5.965.708-.708zm5.257-5.964l-5.965 5.964.708.708 5.964-5.965-.707-.707zM6.182 2.889l.964.965.708-.708-.965-.964-.707.707zm1.672.965l.964-.965-.707-.707-.965.964.708.708zM10.964 1c-1.07 0-2.096.425-2.853 1.182l.707.707A3.037 3.037 0 0110.964 2V1zM14 5.036c0 .805-.32 1.577-.89 2.146l.708.707A4.036 4.036 0 0015 5.036h-1zm1 0A4.036 4.036 0 0010.964 1v1A3.036 3.036 0 0114 5.036h1zM4.036 2c.805 0 1.577.32 2.146.89l.707-.708A4.036 4.036 0 004.036 1v1zM1 5.036A3.036 3.036 0 014.036 2V1A4.036 4.036 0 000 5.036h1zm.89 2.146A3.035 3.035 0 011 5.036H0c0 1.07.425 2.096 1.182 2.853l.707-.707z"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8 3h7v7h-1V4.707l-6 6-3-3-4.146 4.147-.708-.708L5 6.293l3 3L13.293 4H8V3z"
               fill="currentColor"
             ></path>
           </svg>
+
           <div className="ml-5">
             <div className="rounded-full bg-gray-200  flex items-center justify-center  aspect-square h-7 w-7 hover:opacity-60 duration-300 text-white">
               <a
@@ -111,18 +126,8 @@ const Navbar = () => {
               </a>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
-
-
-        {/* <SideBar /> */}
-        {/* {location.pathname.match(/video/)? null : (
-          <div className="categoriesbar w-full mt-4 text-gray-400 flex space-x-14  px-5 items-center  py-1 z-0 tracking-wide pl-6  ">
-            <CategoriesSection />
-            <FavChannelSection />
-          </div>
-        )} */}
-  
     </div>
   );
 };

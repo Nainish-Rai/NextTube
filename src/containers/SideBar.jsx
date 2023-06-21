@@ -1,4 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { TbHome2 } from "react-icons/tb";
+import { HiOutlineFire } from "react-icons/hi";
+import { MdOutlinePlaylistAdd } from "react-icons/md";
+import { BiHeart } from "react-icons/bi";
+import { useLocation } from "react-router-dom";
 import SideBarItem from "../components/SideBarItem";
 import SideBarExploreItem from "../components/SideBarExploreItem";
 import "./SideBar.css";
@@ -19,19 +25,39 @@ import { Link } from "react-router-dom";
 import MiniSideBarItem from "../components/MiniSideBarItem";
 const SideBar = () => {
   const [mini, setMini] = useState(true);
-  
+  const location = useLocation();
+  const variants = {
+    open: { width: 208 },
+    closed: { width: 50 },
+  };
   function handleClick() {
-
     setMini(() => !mini);
   }
-  
+
   return (
-    <div
+    <motion.div
+      initial={false}
+      animate={!mini ? "open" : "closed"}
+      variants={variants}
+      transition={{
+        type: "spring",
+        stiffness: 400,
+        damping: 35,
+        delay: 0,
+        duration: 0.3,
+      }}
       className={`sidebar ${
         mini ? "w-[50px]" : "w-52"
-      } px-1  z-0 max-h-screen   h-screen overflow-scroll scrollbar-hide bg-[#101012]  ease-in-out duration-300 align-top  gap-5  text-teal-50 `}
+      } px-1  z-0 max-h-screen hidden lg:block   h-screen overflow-scroll scrollbar-hide ${
+        location.pathname.match(/video/)
+          ? "bg-black hover:bg-[#101012]"
+          : "bg-[#101012] "
+      }  align-top  gap-5  text-teal-50 `}
     >
-      <div onClick={handleClick} className={`mt-4 ${mini?"ml-2":"ml-5"} duration-300`}>
+      <div
+        onClick={handleClick}
+        className={`mt-4 ${mini ? "ml-2" : "ml-5"} duration-300`}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -47,19 +73,52 @@ const SideBar = () => {
           />
         </svg>
       </div>
-      {/* {mini && !location.pathname.match(/video/) &&(
-
-        <div className="flex flex-col justify-center gap-5">
-            <MiniSideBarItem title={"Home"} icon={ ''} />
-            <MiniSideBarItem title={"Shorts"} icon={ ''} />
-            <MiniSideBarItem title={"Subs"} icon={ ''} />
-            <MiniSideBarItem title={"Library"} icon={ ''} />
-        </div>
-
-      ) 
-      } */}
+      <AnimatePresence 
+         initial={{ opacity: 0 }}
+         animate={{ opacity: 1 }}
+         exit={{ opacity: 0 }}  
+         transition={{duration:0.5}}>
+      {mini && !location.pathname.match(/video/) && (
+       
+        <motion.div className="flex flex-col px-1 items-center pt-5 justify-center gap-5">
+          <MiniSideBarItem
+            title={"Home"}
+            icon={<TbHome2 className="text-gray-200" size={20} />}
+          />
+          <MiniSideBarItem
+            title={"Trending"}
+            icon={<HiOutlineFire className="text-gray-200" size={20} />}
+          />
+          <MiniSideBarItem
+            title={"Library"}
+            icon={<BiHeart className="text-gray-200" size={20} />}
+          />
+          <MiniSideBarItem
+            title={"Subs"}
+            icon={<MdOutlinePlaylistAdd className="text-gray-200" size={20} />}
+          />
+        </motion.div>
+      )}</AnimatePresence>
+      <AnimatePresence
+      initial={{  height:0 }}
+           
+      animate={{ scale: 1 , height:300}}
+      exit={{ scale:0 }}
+      transition={{
+        type: 'spring' ,
+        stiffness: 400,
+damping: 40,   
+         delay: 0,
+         duration: 0.3
+      }}>
       {!mini && (
-        <div className="openedsidebar hidden lg:flex flex-col  overflow-y-auto overflow-x-hidden min-h-screen w-full scrollbar-hide px-4  ">
+        <motion.div
+          className={`openedsidebar hidden lg:flex flex-col  overflow-y-auto overflow-x-hidden min-h-screen w-full scrollbar-hide px-4 ${
+            location.pathname.match(/video/)
+              ? "border-white/10 border-r"
+              : "null "
+          } `}
+        >
           <div className="sections my-4">
             <div className="flex flex-col gap-2">
               <Link to="/">
@@ -372,9 +431,9 @@ const SideBar = () => {
             <h2>Made with Love by Nainish</h2>
             <h2>NEXTTUBE</h2>
           </div>
-        </div>
-      )}
-    </div>
+        </motion.div>
+      )}</AnimatePresence>
+    </motion.div>
   );
 };
 
