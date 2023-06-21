@@ -3,7 +3,7 @@ import SkeletonVideoList from "./SkeletonVideoList";
 
 function SkeletonChannelDetails() {
   return (
-    <div>
+    <div className="bg-black h-screen overflow-scroll scrollbar-hide lg:rounded-tl-[2rem]">
       <div
         role="status"
         class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 md:flex md:items-center sm:mt-12 mt-10  md:ml-

@@ -29,7 +29,7 @@ const VideoDetails = () => {
   if (isError) return "An error has occurred.";
   if (isLoading)
     return (
-      <div  className="lg:pt-20 pt-9 w-full rounded-tl-[2rem]  h-screen overflow-hidden bg-black flex flex-wrap justify-start gap-10 ">
+      <div  className="lg:pt-20 pt-9 w-full rounded-tl-[2rem]  h-screen overflow-scroll scrollbar-hide bg-black flex flex-wrap justify-start gap-10 ">
         <SkeletonVideoDetails/>
         <SkeletonRelatedVideos />
       </div>

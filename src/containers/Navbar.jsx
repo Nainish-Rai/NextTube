@@ -29,7 +29,7 @@ const Navbar = () => {
   };
   return (
     <div
-      className={`navbar w-full mx-auto md:justify-between  justify-center  fixed top-0   z-30  flex-wrap pb-2`}
+      className={`navbar w-full  md:justify-between  justify-center  fixed top-0   z-30  flex-wrap pb-2`}
     >
       <div
         className={`bg-black/70 border-black border-b backdrop-blur-[8px]  ${

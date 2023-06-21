@@ -80,7 +80,16 @@ const SideBar = () => {
          transition={{duration:0.5}}>
       {mini && !location.pathname.match(/video/) && (
        
-        <motion.div className="flex flex-col px-1 items-center pt-5 justify-center gap-5">
+        <motion.div  initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+     
+        transition={{
+          type: "spring",
+          stiffness: 400,
+          damping: 40,
+          delay: 0.25  ,
+          duration: 0.5,
+        }}  className="flex flex-col px-1 items-center pt-5 justify-center gap-5">
           <MiniSideBarItem
             title={"Home"}
             icon={<TbHome2 className="text-gray-200" size={20} />}
@@ -112,7 +121,16 @@ damping: 40,
          duration: 0.3
       }}>
       {!mini && (
-        <motion.div
+        <motion.div   initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        
+        transition={{
+          type: "spring",
+          stiffness: 400,
+          damping: 40,
+          delay:0.25,
+          duration: 0.5,
+        }}
           className={`openedsidebar hidden lg:flex flex-col  overflow-y-auto overflow-x-hidden min-h-screen w-full scrollbar-hide px-4 ${
             location.pathname.match(/video/)
               ? "border-white/10 border-r"

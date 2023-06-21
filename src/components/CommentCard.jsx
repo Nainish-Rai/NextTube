@@ -13,11 +13,11 @@ const CommentCard = ({authorDisplayName,authorProfile,textDisplay,publishedTimeT
         {/* right */}
         <div>
             <div className='flex items-center space-x-2'>
-                <h1 className='font-medium text-base'>{authorDisplayName}</h1>
+                <h1 className='text-base    '>{authorDisplayName}</h1>
                 <p className='font-thin text-xs
                 '>{publishedTimeText}</p>
             </div>
-            <div dangerouslySetInnerHTML={{__html: `${textDisplay}`.substring(0,200)}} className='opacity-80 text-sm'>
+            <div dangerouslySetInnerHTML={{__html: `${textDisplay}`.substring(0,200)}} className='opacity-80 text-sm font-thin'>
                 
             </div>
             <div>

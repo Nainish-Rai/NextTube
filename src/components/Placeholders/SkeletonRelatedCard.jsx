@@ -4,7 +4,7 @@ function SkeletonRelatedCard() {
   return (
     <div
       role="status"
-      class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 flex flex-col md:items-center min-[700px]:w-1/3 md:w-1/2 lg:w-full p-3 cursor-pointer"
+      class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 flex flex-col md:items-center w-full min-[700px]:w-1/3 md:w-1/2 lg:w-full p-3 cursor-pointer"
     >
       <div class="flex items-center justify-center w-full  p-3 cursor-pointer aspect-video bg-gray-300 md:rounded-2xl overflow-hidden dark:bg-gray-700">
         <svg
