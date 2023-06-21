@@ -41,10 +41,10 @@ const SideBar = () => {
       variants={variants}
       transition={{
         type: "spring",
-        stiffness: 600,
-        damping: 30,
+        stiffness: 800,
+        damping: 25,
         delay: 0,
-        duration: 0.3,
+        duration: 0.15,
       }}
       className={`sidebar ${
         mini ? "w-[50px]" : "w-52"
@@ -77,7 +77,7 @@ const SideBar = () => {
          initial={{ opacity: 0 }}
          animate={{ opacity: 1 }}
          exit={{ opacity: 0 }}  
-         transition={{duration:0.5}}>
+         transition={{duration:0.1}}>
       {mini && !location.pathname.match(/video/) && (
        
         <motion.div  initial={{ opacity: 0 }}
@@ -88,8 +88,8 @@ const SideBar = () => {
           ease:"easeInOut",
           stiffness: 400,
           damping: 40,
-          delay: 0.25  ,
-          duration: 0.5,
+          delay: 0.15  ,
+          duration: 0.15,
         }}  className="flex flex-col px-1 items-center pt-5 justify-center gap-5">
           <MiniSideBarItem
             title={"Home"}
@@ -117,10 +117,10 @@ const SideBar = () => {
       transition={{
         type: "tween",
         ease:"easeInOut",
-        stiffness: 400,
+        stiffness: 500,
 damping: 40,   
          delay: 0,
-         duration: 0.3
+         duration: 0.2
       }}>
       {!mini && (
         <motion.div   initial={{ opacity: 0 }}
@@ -132,8 +132,8 @@ damping: 40,
 
           stiffness: 400,
           damping: 40,
-          delay:0.25,
-          duration: 0.5,
+          delay:0.15,
+          duration: 0.15,
         }}
           className={`openedsidebar hidden lg:flex flex-col  overflow-y-auto overflow-x-hidden min-h-screen w-full scrollbar-hide px-4 ${
             location.pathname.match(/video/)
