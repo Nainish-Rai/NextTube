@@ -41,7 +41,7 @@ const VideoInfo = ({
           </p>}
         </div>
         <div className="mt-3">
-          <h1 className="font-semibold text-gray-50 text-xl">{title}</h1>
+          <h1 className="font-medium text-gray-50 md:text-xl text-lg">{title}</h1>
         </div>
         <div className="flex justify-between mt-5 items-center">
           {/* Channel deatils */}
@@ -53,7 +53,7 @@ const VideoInfo = ({
               />}
             </div>
             <div className="py-1 cursor-pointer">
-              <h2 className=" font-semibold text-base text-gray-300 hover:text-white">
+              <h2 className=" font-semibold text-sm text-gray-300 hover:text-white">
                 {author}
               </h2>
               <h3 className=" opacity-90 font-thin text-sm text-gray-300">
@@ -63,7 +63,7 @@ const VideoInfo = ({
           </div>
             {/* channel details end */}
           <div className=" cursor-pointer hover:opacity-90 bg-red-500 p-2 px-8 rounded-full center">
-            <h3 className="font-medium text-gray-300">Subscribe</h3>
+            <h3 className="md:font-medium text-sm md:text-base text-gray-300">Subscribe</h3>
           </div>
         </div>
         {/* descrpiton start */}

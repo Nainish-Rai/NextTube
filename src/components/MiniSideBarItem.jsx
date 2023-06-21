@@ -1,11 +1,12 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 const MiniSideBarItem = ({icon,title}) => {
   return (
-    <div className='w-5 h-5 flex bg-white/10 rounded flex-col items-center justify-center'>
+    <motion.div     whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.95 }} transition={{duration:0.1}} className='w-8 h-8 flex cursor-pointer  hover:bg-white/10 rounded flex-col items-center justify-center'>
         <div>{icon}</div>
-        <div className='text-[10px]'>{title}</div>
-    </div>
+    </motion.div>
   )
 }
 

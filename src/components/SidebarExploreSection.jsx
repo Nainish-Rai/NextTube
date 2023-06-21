@@ -3,8 +3,8 @@ import SideBarExploreItem from "./SideBarExploreItem";
 
 const SidebarExploreSection = () => {
   return (
-    <div className="explore border-t pt-6 my-5 flex flex-col">
-      <h2 className="text-xl pl-2 mb-2">Explore</h2>
+    <div className="explore border-t border-gray-200/10 pt-6 my-5 flex flex-col">
+      <h2 className="text-lg pl-2 mb-2">Explore</h2>
       <div className="flex flex-col gap-3 mt-2">
         <SideBarExploreItem
           icon={

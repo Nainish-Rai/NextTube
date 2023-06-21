@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Route, BrowserRouter, Routes , useLocation } from "react-router-dom";
 import "./App.css";
 import ChannelDetail from "./pages/ChannelDetail";
 import Feed from "./pages/Feed";
@@ -16,16 +16,21 @@ import ScrollToTop from "./utils/ScrollToTop";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App h-full w-full text-slate-200 bg-black">
+      <div className={`App h-full w-full text-slate-200 bg-[#101012]`}>
         <div
           className="w-full  
       "
         >
           <ScrollToTop/>
-          <Navbar />
-          <div className="w-full flex justify-center items-center mt-4">
-          <div className="hidden lg:block"> <DummySidebar /></div>
+         
+          <div className="w-full flex justify-center items-center ">
+          
+        
+          <SideBar/>
+          
+          
             <div className="w-full">
+            <Navbar />
               <Routes>
                 <Route path="/" exact element={<Feed />} />
                 <Route
