@@ -41,8 +41,8 @@ const SideBar = () => {
       variants={variants}
       transition={{
         type: "spring",
-        stiffness: 800,
-        damping: 25,
+        stiffness: 700,
+        damping: 30,
         delay: 0,
         duration: 0.15,
       }}
@@ -132,7 +132,7 @@ damping: 40,
 
           stiffness: 400,
           damping: 40,
-          delay:0.15,
+          delay:0.2,
           duration: 0.15,
         }}
           className={`openedsidebar hidden lg:flex flex-col  overflow-y-auto overflow-x-hidden min-h-screen w-full scrollbar-hide px-4 ${
