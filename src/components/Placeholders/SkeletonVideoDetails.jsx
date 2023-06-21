@@ -1,8 +1,15 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 function SkeletonVideoDetails() {
   return (
-    <div className="w-full h-screen overflow-hidden bg-black lg:w-[65%] lg:ml-14">
+    <motion.div  initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{
+      type: "tween",
+      ease: "easeInOut",
+      duration: 0.5,
+    }} className="w-full h-screen overflow-hidden bg-black lg:w-[65%] lg:ml-14">
       <div
         role="status"
         class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 md:flex flex-col  md:items-center"
@@ -20,7 +27,7 @@ function SkeletonVideoDetails() {
         </div>
         <span class="sr-only">Loading...</span>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

@@ -2,10 +2,11 @@ import React from "react";
 import VideoCard from "../components/VideoCard";
 import PlaylistCard from "../components/PlaylistCard";
 import ChannelCard from "../components/ChannelCard";
+import { motion } from "framer-motion";
 
 const VideoList = ({ data }) => {
   return (
-    <div className="flex flex-wrap sm:p-2">
+    <motion.div className="flex flex-wrap sm:p-2">
       {data &&
         data.map((item) => {
           if (item.type == "video") {
@@ -54,7 +55,7 @@ const VideoList = ({ data }) => {
             );
           }
         })}
-    </div>
+    </motion.div>
   );
 };
 

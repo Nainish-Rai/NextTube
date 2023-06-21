@@ -1,9 +1,15 @@
-import React from "react";
+import React from "react";import { motion } from "framer-motion";
 import SkeletonVideoList from "./SkeletonVideoList";
 
 function SkeletonChannelDetails() {
   return (
-    <div className="bg-black h-screen overflow-scroll scrollbar-hide lg:rounded-tl-[2rem]">
+    <motion.div initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{
+      type: "tween",
+      ease: "easeInOut",
+      duration: 0.5,
+    }} className="bg-black h-screen overflow-scroll scrollbar-hide lg:rounded-tl-[2rem]">
       <div
         role="status"
         class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 md:flex md:items-center sm:mt-12 mt-10  md:ml-
@@ -35,7 +41,7 @@ function SkeletonChannelDetails() {
         <h2 className="font-medium text-xl">Playlists</h2>
       </div>
       <SkeletonVideoList/>
-    </div>
+    </motion.div>
   );
 }
 

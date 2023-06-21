@@ -74,11 +74,11 @@ export const textContainer = {
 
 export const textVariant2 = {
   hidden: {
-    opacity: 0,
+    scale:0.8,
     y: 20,
   },
   show: {
-    opacity: 1,
+    scale:1,
     y: 0,
     transition: {
       type: 'tween',

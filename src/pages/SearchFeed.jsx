@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import VideoCard from "../components/VideoCard";
 import "./Feed.css";
@@ -24,15 +25,24 @@ const SearchFeed = () => {
   if (isError) return "An error has occurred.";
   if (isLoading)
     return (
-      <div className=" bg-black h-screen overflow-hidden">
+      <div className=" bg-black h-screen overflow-scroll scrollbar-hide">
         <div className="rounded-2xl pt-16 lg:ml-4  overflow-hidden">
           <div className="p-2 ml-5">
-            <p className=" text-base font-medium ">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                type: "tween",
+                ease: "easeInOut",
+                duration: 0.5,
+              }}
+              className=" text-base font-medium "
+            >
               Search results for{" "}
               <span className=" text-red-500 "> {searchTerm}</span>
-            </p>
+            </motion.p>
           </div>
-        <SkeletonVideoList/>
+          <SkeletonVideoList />
         </div>
       </div>
     );

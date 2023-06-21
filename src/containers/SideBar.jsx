@@ -41,8 +41,8 @@ const SideBar = () => {
       variants={variants}
       transition={{
         type: "spring",
-        stiffness: 400,
-        damping: 35,
+        stiffness: 600,
+        damping: 30,
         delay: 0,
         duration: 0.3,
       }}
@@ -84,7 +84,8 @@ const SideBar = () => {
         animate={{ opacity: 1 }}
      
         transition={{
-          type: "spring",
+          type: "tween",
+          ease:"easeInOut",
           stiffness: 400,
           damping: 40,
           delay: 0.25  ,
@@ -114,7 +115,8 @@ const SideBar = () => {
       animate={{ scale: 1 , height:300}}
       exit={{ scale:0 }}
       transition={{
-        type: 'spring' ,
+        type: "tween",
+        ease:"easeInOut",
         stiffness: 400,
 damping: 40,   
          delay: 0,
@@ -125,7 +127,9 @@ damping: 40,
         animate={{ opacity: 1 }}
         
         transition={{
-          type: "spring",
+          type: "tween",
+          ease:"easeInOut",
+
           stiffness: 400,
           damping: 40,
           delay:0.25,
@@ -447,7 +451,7 @@ damping: 40,
           </div>
           <div className="footer mb-32  border-gray-200/10 border-t pt-6">
             <h2>Made with Love by Nainish</h2>
-            <h2>NEXTTUBE</h2>
+            <h2 className="my-4">NEXTTUBE</h2>
           </div>
         </motion.div>
       )}</AnimatePresence>

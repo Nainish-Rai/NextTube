@@ -1,10 +1,18 @@
 import React from "react";
+import { motion } from "framer-motion";
+
 
 function SkeletonVideoCard() {
   return (
-    <div
+    <motion.div  initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{
+      type: "tween",
+      ease: "easeInOut",
+      duration: 0.5,
+    }} 
       role="status"
-      class="w-full xl:w-1/4 lg:w-1/4 min-[700px]:w-1/3 md:w-1/2 sm:w-1/2 sm:p-2 lg:p-3 cursor-pointer py-2 md:py-2 shadow animate-pulse duration-100  sm:rounded-lg overflow-hidden "
+      class="w-full xl:w-1/4 lg:w-1/4 min-[700px]:w-1/3 md:w-1/2 sm:w-1/2 sm:p-2 lg:p-3 cursor-pointer py-2 md:py-2 shadow animate-pulse   sm:rounded-lg overflow-hidden "
     >
       <div class="flex items-center justify-center  mb-4 bg-gray-300  dark:bg-gray-700 sm:rounded-xl overflow-hidden aspect-video ">
         <svg
@@ -26,7 +34,7 @@ function SkeletonVideoCard() {
         </div>
       </div>
       <span class="sr-only">Loading...</span>
-    </div>
+    </motion.div>
   );
 }
 

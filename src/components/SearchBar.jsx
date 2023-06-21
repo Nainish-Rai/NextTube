@@ -106,10 +106,11 @@ const SearchBar = () => {
             <div>
               <AnimatePresence>
 
-              {suggestions.slice(0, 7).map((item) => {
+              {suggestions.slice(0, 7).map((item,index) => {
                 return (
                   // mousedown is used beacuse it fires before onBlur in inputText so search get executed
                   <motion.p 
+                  key={index}
                   initial={{ opacity: 0  }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}

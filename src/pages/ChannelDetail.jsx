@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";import { motion } from "framer-motion";
 import {
   Link,
   Route,
@@ -39,7 +39,13 @@ const ChannelDetail = () => {
 
   return (
     <div className="h-screen overflow-hidden rounded-tl-[2rem]">
-      <div
+      <motion.div  initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{
+      type: "tween",
+      ease: "easeInOut",
+      duration: 0.5,
+    }} 
         className="sm:pt-12 pt-24   md:ml-
      lg:px-4 sm:p-2 flex flex-col bg-black h-full overflow-scroll scrollbar-hide"
       >
@@ -196,7 +202,7 @@ const ChannelDetail = () => {
           )}
           <Outlet context={[videoData]} />
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

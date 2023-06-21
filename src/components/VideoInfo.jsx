@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
-import { api } from "../utils/api";
 
 import { useNavigate } from "react-router-dom";
 const VideoInfo = ({
@@ -29,7 +29,13 @@ const VideoInfo = ({
   // let desc = parse(`${description}`)
   if (true) {
     return (
-      <div className="p-2 sm:p-4 lg:p-1 mt-4">
+      <motion.div  initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        type: "tween",
+        ease: "easeInOut",
+        duration: 0.5,
+      }}  className="p-2 sm:p-4 lg:p-1 mt-4">
         <div className="flex justify-between font-medium opacity-70 text-sm">
           <p>Uploaded {publishedText}</p>
           {viewCount!=0 &&<p>
@@ -82,7 +88,7 @@ const VideoInfo = ({
               {readMore ? "Read more" : "Read less"}
             </div>
         </div>
-      </div>
+      </motion.div>
     );
   } else {
     return <div>d</div>;

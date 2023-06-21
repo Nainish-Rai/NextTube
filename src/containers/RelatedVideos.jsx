@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { motion } from "framer-motion";
 import VideoCard from "../components/VideoCard";
 import RelatedCard from "../components/RelatedCard";
 import { api } from "../utils/api";
@@ -13,7 +13,13 @@ const RelatedVideos = ({data}) => {
     
   
   return (
-    <div className="" >
+    <motion.div  initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{
+      type: "tween",
+      ease: "easeInOut",
+      duration: 0.5,
+    }} className="" >
         <h2 className="ml-3 font-medium">Related Videos</h2>
       <div className="flex flex-wrap lg:flex-col">
         {data.map((item) => {
@@ -32,7 +38,7 @@ const RelatedVideos = ({data}) => {
           );
         })}
       </div>
-    </div>
+    </motion.div>
   );}else{
     return(
       <div>s</div>
