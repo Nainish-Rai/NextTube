@@ -41,8 +41,9 @@ const SideBar = () => {
       variants={variants}
       transition={{
         type: "spring",
+        ease:"easeInOut",
         stiffness: 700,
-        damping: 30,
+        damping: 33,
         delay: 0,
         duration: 0.15,
       }}

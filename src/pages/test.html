@@ -1,21 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <!-- Default theme. ~960B -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack/styles/base.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack/styles/ui/buttons.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vidstack/styles/ui/sliders.min.css" />
-    <script type="module" src="https://cdn.jsdelivr.net/npm/vidstack/dist/cdn/prod.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
-
 <body>
-<!-- remove `controls` attribute if you're designing a custom UI -->
-<div class="plyr__video-embed" id="player">
-  <iframe
-    src="https://www.youtube.com/embed/V4D49YYihQI?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
-    allowfullscreen
-    allowtransparency
-    allow="autoplay"
-  ></iframe>
-</div>
-</video>
+  <div id="playerContainer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/indigo-player@1/lib/indigo-player.js"></script>
+  <script>
+    const config = {
+      sources: [
+        {
+          type: 'mp4',
+          src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+        }
+      ],
+    };
+
+    const element = document.getElementById('playerContainer');
+    const player = IndigoPlayer.init(element, config);
+
+    // You can use the player object now to access the player and it's methods (play, pause, ...)
+  </script>
 
 </body>
+</html>
