@@ -16,7 +16,7 @@ import SkeletonVideoDetails from "../components/Placeholders/SkeletonVideoDetail
 const VideoDetails = () => {
   const videoId = useParams();
   let id = videoId.id;
-  // console.log(id)
+  console.log(id);
 
   // const [data, setData] = useState([]);
   // console.log(data)
@@ -29,8 +29,8 @@ const VideoDetails = () => {
   if (isError) return "An error has occurred.";
   if (isLoading)
     return (
-      <div  className="lg:pt-20 pt-9 w-full rounded-tl-[2rem]  h-screen overflow-scroll scrollbar-hide bg-black flex flex-wrap justify-start gap-10 ">
-        <SkeletonVideoDetails/>
+      <div className="lg:pt-20 pt-9 w-full rounded-tl-[2rem]  h-screen overflow-scroll scrollbar-hide bg-black flex flex-wrap justify-start gap-10 ">
+        <SkeletonVideoDetails />
         <SkeletonRelatedVideos />
       </div>
     );
@@ -39,26 +39,32 @@ const VideoDetails = () => {
     type: "video",
     sources: [
       {
-        src:
-          data &&
-          data.formatStreams[data.formatStreams.length - 2].url,
+        src: data && data.formatStreams[data.formatStreams.length - 2].url,
         type: "video/mp4",
         size: 360,
       },
       {
-        src:
-          data &&
-          data.formatStreams[data.formatStreams.length - 1].url,
+        src: data && data.formatStreams[data.formatStreams.length - 1].url,
         type: "video/webm",
         size: 720,
       },
     ],
     poster: data.videoThumbnails && data.videoThumbnails[3].url,
+    tracks: [
+      {
+        kind: "captions",
+        label: "English",
+        srclang: "en",
+        src: "https://invidious.baczek.me/api/v1/captions/yG2piemxTyA?label=English",
+        default: true,
+      },
+    ],
   };
 
   const videoOptions = {
     autoplay: true,
     keyboard: { focused: true, global: true },
+    // captions: { active: true, language: "auto", update: true },
   };
 
   // const adaptiveFormatsList = data.adaptiveFormats && data.adaptiveFormats

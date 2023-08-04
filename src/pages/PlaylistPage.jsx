@@ -42,10 +42,10 @@ const PlaylistPage = () => {
       </div>
     );
   return (
-    <div className="flex  lg:p-2  bg-black h-screen overflow-scroll scrollbar-hide lg:rounded-l-[2rem]">
+    <div className="flex  lg:p-2  bg-black h-screen overflow-y-scroll overflow-x-hidden scrollbar-hide lg:rounded-l-[2rem]">
       <div className="pt-16 lg:pl-14">
         {/* left */}
-        <div className="w-1/4 h-[85%] fixed hidden lg:block rounded-xl overflow-hidden ml-6 ">
+        <div className="w-1/4 h-[85%] fixed hidden lg:block rounded-xl overflow-hidden ml-2 ">
           {/* bg color image */}
           <img
             className="relative h-full w-full object-cover brightness-75  "
@@ -58,7 +58,7 @@ const PlaylistPage = () => {
                 <div className="rounded-lg overflow-hidden aspect-video w-80 ">
                   <img
                     className="object-cover w-full h-full"
-                    src={data.videos[0].videoThumbnails[0].url}
+                    src={data.videos[0].videoThumbnails[3].url}
                   />
                 </div>
               )}
@@ -112,7 +112,7 @@ const PlaylistPage = () => {
           <div className=" backdrop-blur-lg bg-gradient-to-t from-black  absolute top-0 bottom-0 w-full"></div>
         </div>
         {/* right */}
-        <div className={`w-full mx-1 md:ml-1  lg:ml-[45%] lg:pl-8  `}>
+        <div className={`w-full mx-1 md:ml-1  lg:ml-96 lg:pl-8  `}>
           <div className="ml-10 mt-2">
             <h1 className="font-thin text-4xl flex items-center">
               {data.title}{" "}
