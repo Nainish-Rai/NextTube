@@ -43,7 +43,7 @@ const PlaylistPage = () => {
     );
   return (
     <div className="flex  lg:p-2  bg-black h-screen overflow-y-scroll overflow-x-hidden scrollbar-hide lg:rounded-l-[2rem]">
-      <div className="pt-16 lg:pl-14">
+      <div className="pt-12 lg:pl-14">
         {/* left */}
         <div className="w-1/4 h-[85%] fixed hidden lg:block rounded-xl overflow-hidden ml-2 ">
           {/* bg color image */}

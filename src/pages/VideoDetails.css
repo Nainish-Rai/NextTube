@@ -13,8 +13,6 @@
   --plyr-color-main: rgba(239, 68, 68, 0.856);
   --plyr-menu-background: rgb(22, 22, 22);
   --plyr-menu-color: rgba(255, 255, 255, 0.832);
-  --plyr-captions-background: black;
-  --plyr-captions-text-color: #fff;
 }
 
 video {

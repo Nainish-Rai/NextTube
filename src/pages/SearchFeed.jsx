@@ -1,24 +1,17 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React from "react";
+
 import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
-import VideoCard from "../components/VideoCard";
+
 import "./Feed.css";
 import VideoList from "../containers/VideoList";
 import useApi from "../utils/useApi";
-import SkeletonVideoCard from "../components/Placeholders/SkeletonVideoCard";
+
 import SkeletonVideoList from "../components/Placeholders/SkeletonVideoList";
 
 const SearchFeed = () => {
   const { searchTerm } = useParams();
-  // const [data, setData] = useState([]);
 
-  // useEffect(()=>{
-  //   api(`search?q=${searchTerm}&region=IN`).then((response)=>{
-  //     setData(response)
-  //   })
-  //  },[searchTerm])
-  //  console.log(data)
   const { data, isLoading, isError } = useApi(
     `search?q=${searchTerm}&region=IN`
   );
@@ -50,8 +43,8 @@ const SearchFeed = () => {
   if (data) {
     return (
       <div className="">
-        <div className="rounded-tl-[2rem] pt-16 bg-black max-h-screen overflow-scroll scrollbar-hide scroll-pb-16">
-          <div className="p-2 ml-8">
+        <div className="rounded-tl-[2rem] pt-8 bg-black max-h-screen overflow-scroll scrollbar-hide scroll-pb-16">
+          <div className="p-2 lg:ml-8 sm:ml-5 md:-mb-6 mt-4">
             <p className=" text-base font-medium ">
               Search results for{" "}
               <span className=" text-red-500 "> {searchTerm}</span>

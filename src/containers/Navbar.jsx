@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Route, BrowserRouter, useLocation, Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
-import SideBar from "./SideBar";
-import CategoriesSection from "../components/CategoriesSection";
-import FavChannelSection from "../components/FavChannelSection";
 const Navbar = () => {
   const location = useLocation();
   // const [colorChange, setColorchange] = useState(false);
@@ -25,17 +22,20 @@ const Navbar = () => {
   const spring = {
     type: "spring",
     stiffness: 400,
-    damping: 30
+    damping: 30,
   };
   return (
     <div
-      className={`navbar w-full  md:justify-between  justify-center  fixed top-0   z-30  flex-wrap pb-2`}
+      className={`navbar w-full  md:justify-between  justify-center sticky top-0   z-30`}
     >
       <div
         className={`bg-black/70 border-black border-b backdrop-blur-[8px]  ${
-          location.pathname.match(/video/) ? "null sm:justify-between "  : "lg:rounded-tl-[2rem] sm:justify-start"
+          location.pathname.match(/video/)
+            ? "null sm:justify-between "
+            : "lg:rounded-tl-[2rem] sm:justify-start"
         }  navbar max-w-full py-2  flex items-center  w-full gap-10 md:px-4 `}
       >
+        {/* logo */}
         <div className=" flex items-center ml-6">
           <Link className="flex items-end" to="/">
             <svg
@@ -52,7 +52,7 @@ const Navbar = () => {
             </h1>
           </Link>
         </div>
-
+        {/* search bar */}
         <motion.div className="w-[33%]" layout transition={spring}>
           <SearchBar />
         </motion.div>
@@ -61,8 +61,9 @@ const Navbar = () => {
 
         <div
           className={`navrightsec items-center hidden justify-around
-         w-56  mr-16 cursor-pointer ${
-          !location.pathname.match(/video/) ? " ml-auto " : "null" } lg:flex`}
+         w-56  mr-4 cursor-pointer ${
+           !location.pathname.match(/video/) ? " ml-auto " : "null"
+         } lg:flex`}
         >
           <svg
             viewBox="0 0 15 15"

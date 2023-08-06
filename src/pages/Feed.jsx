@@ -15,7 +15,7 @@ const Feed = () => {
   //  api(`trending?maxResults=10`).then((response)=>setData(response))
   // },[])
   // console.log(data)
-  console.log(location.pathname + "lcoation")
+  console.log(location.pathname + "lcoation");
   const { data, isLoading, isError } = useApi("trending?maxResults=10");
   if (isError) return "An error has occurred.";
   if (isLoading)
@@ -45,7 +45,7 @@ const Feed = () => {
 
   return (
     <div className="scrollbar-hide bg-black lg:rounded-l-[2rem] lg:overflow-scroll lg:h-screen">
-      <div className="rounded-2xl  pt-16   lg:px-2 overflow-hidden">
+      <div className="rounded-2xl  pt-12   lg:px-2 overflow-hidden">
         {/* {location.pathname.match(/video/) ? null : (
           <div className="categoriesbar mb-5 text-gray-400 flex  items-center  py-1 lg:pl-6 tracking-wide overflow-hidden ">
             <div className=" flex flex-wrap gap-8">

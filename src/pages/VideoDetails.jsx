@@ -50,52 +50,31 @@ const VideoDetails = () => {
       },
     ],
     poster: data.videoThumbnails && data.videoThumbnails[3].url,
-    tracks: [
-      {
-        kind: "captions",
-        label: "English",
-        srclang: "en",
-        src: "https://invidious.baczek.me/api/v1/captions/yG2piemxTyA?label=English",
-        default: true,
-      },
-    ],
+    // tracks: [
+    //   {
+    //     kind: "captions",
+    //     label: "English",
+    //     srclang: "en",
+    //     src: `https://vid.priv.au/api/v1/captions/${id}?label=English&local=true.vtt`,
+    //     default: true,
+    //   },
+    // ],
   };
 
   const videoOptions = {
     autoplay: true,
     keyboard: { focused: true, global: true },
-    // captions: { active: true, language: "auto", update: true },
+    captions: { active: true, language: "English", update: true },
   };
-
-  // const adaptiveFormatsList = data.adaptiveFormats && data.adaptiveFormats
-
-  // let adaptiveUrlList = adaptiveFormatsList.map((item)=>item.url)
-  // console.log(adaptiveUrlList)
 
   if (true) {
     return (
-      <div className="lg:pt-20 pt-14 mx-auto w-full lg:rounded-tl-[2rem]  flex flex-wrap bg-black h-screen overflow-scroll scrollbar-hide justify-start gap-10 ">
+      <div className="lg:pt-14 pt-8 mx-auto w-full lg:rounded-tl-[2rem]  flex flex-wrap bg-black h-screen overflow-y-scroll overflow-x-hidden scrollbar-hide justify-start gap-10 ">
         {/* Left Side */}
 
         <div className="leftside w-full lg:w-[65%] lg:ml-10 ">
           <div className="w-full ">
             <div className="player-wrapper lg:rounded-3xl">
-              {/* <ReactPlayer
-          className="react-player object-cover w-full"
-            controls="true"
-            // style={vidStyle}
-            width="100%"
-            height="100%"
-            // url={`https://www.youtube.com/watch?v=${id}&modestbranding=1&rel=0&showinfo=0`}
-            // url={`https://www.youtube.com/watch?v=${id}&rel=0&amp;showinfo=0&amp;autoplay=1`}
-            // url={`http://www.youtube.com/v/@Model.YoutubeId&rel=0&modestbranding=1`}
-            // url={data.adaptiveFormats && data.adaptiveFormats[data.adaptiveFormats.length - 10].url}
-            url={data.formatStreams && data.formatStreams[2].url}
-            // url={data.formatStreams && data.formatStreams[1].url}
-            // url="https://invidious.sethforprivacy.com/embed/hFGmHNcYWeU"
-            
-            //  source={data.dashUrl}
-          /> */}
               <Plyr source={videoSrc} options={videoOptions} />
             </div>
           </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Route, BrowserRouter, Routes , useLocation } from "react-router-dom";
+import { Route, BrowserRouter, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import ChannelDetail from "./pages/ChannelDetail";
 import Feed from "./pages/Feed";
@@ -21,16 +21,13 @@ function App() {
           className="w-full  
       "
         >
-          <ScrollToTop/>
-         
-          <div className="w-full flex justify-center items-center ">
-          
-        
-          <SideBar/>
-          
-          
+          <ScrollToTop />
+
+          <div className="w-full h-screen overflow-hidden flex justify-center items-center ">
+            <SideBar />
+
             <div className="w-full">
-            <Navbar />
+              <Navbar />
               <Routes>
                 <Route path="/" exact element={<Feed />} />
                 <Route
@@ -45,9 +42,15 @@ function App() {
                 />
                 <Route path="/playlist/:id" exact element={<PlaylistPage />} />
                 <Route path="/video/:id" exact element={<VideoDetails />} />
-                <Route path="/channel/:id" exact element={<ChannelDetail />} >
-                <Route path="/channel/:id/latestvideos" element={<ChannelLatestVideos/>}/>
-                  <Route path="/channel/:id/playlistsection" element={<ChannelPlaylistSection/>}/>
+                <Route path="/channel/:id" exact element={<ChannelDetail />}>
+                  <Route
+                    path="/channel/:id/latestvideos"
+                    element={<ChannelLatestVideos />}
+                  />
+                  <Route
+                    path="/channel/:id/playlistsection"
+                    element={<ChannelPlaylistSection />}
+                  />
                 </Route>
               </Routes>
             </div>
