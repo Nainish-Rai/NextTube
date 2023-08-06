@@ -8,10 +8,11 @@ const VideoList = ({ data }) => {
   return (
     <motion.div className="flex flex-wrap sm:p-2">
       {data &&
-        data.map((item) => {
+        data.map((item, index) => {
           if (item.type == "video") {
             return (
               <VideoCard
+                key={item.videoId}
                 videoId={item.videoId}
                 title={item.title}
                 channelTitle={item.author}
@@ -27,6 +28,7 @@ const VideoList = ({ data }) => {
           if (item.type == "playlist") {
             return (
               <PlaylistCard
+                key={item.playlistId}
                 title={item.title}
                 channelTitle={item.author}
                 channelId={item.authorId}
@@ -42,6 +44,7 @@ const VideoList = ({ data }) => {
           if (item.type == "channel") {
             return (
               <ChannelCard
+                key={index}
                 title={item.author}
                 author={item.author}
                 authorId={item.authorId}
@@ -49,7 +52,11 @@ const VideoList = ({ data }) => {
                 videoCount={item.videoCount}
                 description={item.description && item.description}
                 // lengthText={item.lengthSeconds}
-                thumbnail={item.authorThumbnails[0].url? item.authorThumbnails[0].url: item.authorThumbnails[1].url}
+                thumbnail={
+                  item.authorThumbnails[0].url
+                    ? item.authorThumbnails[0].url
+                    : item.authorThumbnails[1].url
+                }
                 // channelThumbnail={item.channelThumbnail[0].url}
               />
             );

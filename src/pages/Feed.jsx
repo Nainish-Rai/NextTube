@@ -1,20 +1,12 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React from "react";
+
 import VideoCard from "../components/VideoCard";
 import "./Feed.css";
-import CategoriesSection from "../components/CategoriesSection";
-import FavChannelSection from "../components/FavChannelSection";
-import useSWR from "swr";
+
 import useApi from "../utils/useApi";
 import SkeletonVideoCard from "../components/Placeholders/SkeletonVideoCard";
 
 const Feed = () => {
-  // const [data, setData] = useState([]);
-
-  // useEffect(()=>{
-  //  api(`trending?maxResults=10`).then((response)=>setData(response))
-  // },[])
-  // console.log(data)
   console.log(location.pathname + "lcoation");
   const { data, isLoading, isError } = useApi("trending?maxResults=10");
   if (isError) return "An error has occurred.";
@@ -46,20 +38,13 @@ const Feed = () => {
   return (
     <div className="scrollbar-hide bg-black lg:rounded-l-[2rem] overflow-scroll h-screen">
       <div className="rounded-2xl  pt-12   lg:px-2">
-        {/* {location.pathname.match(/video/) ? null : (
-          <div className="categoriesbar mb-5 text-gray-400 flex  items-center  py-1 lg:pl-6 tracking-wide overflow-hidden ">
-            <div className=" flex flex-wrap gap-8">
-              <CategoriesSection />
-              <FavChannelSection />
-            </div>
-          </div>
-        )} */}
         {data ? (
           <div className="flex flex-wrap lg:ml-1 md:px-2 ">
             {data.map((item) => {
               return (
                 item.lengthSeconds > 60 && (
                   <VideoCard
+                    key={item.videoId}
                     videoId={item.videoId}
                     title={item.title}
                     channelTitle={item.author}

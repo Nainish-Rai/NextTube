@@ -128,6 +128,7 @@ const PlaylistPage = () => {
               data.videos.map((item) => {
                 return (
                   <PlaylistVideoCard
+                    key={item.videoId}
                     title={item.title}
                     videoId={item.videoId}
                     author={item.author}

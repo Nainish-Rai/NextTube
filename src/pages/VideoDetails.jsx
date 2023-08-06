@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import ReactPlayer from "react-player";
+import React from "react";
+
 import VideoInfo from "../components/VideoInfo";
 
 import "./VideoDetails.css";
@@ -10,21 +10,14 @@ import Plyr from "plyr-react";
 import "plyr-react/plyr.css";
 import useApi from "../utils/useApi";
 import SkeletonRelatedVideos from "../components/Placeholders/SkeletonRelatedVideos";
-import SkeletonChannelDetails from "../components/Placeholders/SkeletonChannelDetails";
+
 import SkeletonVideoDetails from "../components/Placeholders/SkeletonVideoDetails";
 
 const VideoDetails = () => {
   const videoId = useParams();
   let id = videoId.id;
-  console.log(id);
+  // console.log(id);
 
-  // const [data, setData] = useState([]);
-  // console.log(data)
-  // useEffect(() => {
-  //   api(`videos/${id}`).then((response) => {
-  //     setData(response);
-  //   });
-  // }, [id]);
   const { data, isLoading, isError } = useApi(`videos/${id}`);
   if (isError) return "An error has occurred.";
   if (isLoading)

@@ -124,6 +124,7 @@ const ChannelDetail = () => {
               {data.latestVideos.map((item) => {
                 return (
                   <VideoCard
+                    key={item.videoId}
                     videoId={item.videoId}
                     title={item.title}
                     channelTitle={data.author}
