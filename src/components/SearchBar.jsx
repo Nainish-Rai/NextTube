@@ -90,43 +90,41 @@ const SearchBar = () => {
       {suggestionsToggle && searchTerm && (
         <AnimatePresence>
           <motion.div
-            initial={{  height:0 }}
-           
-            animate={{ scale: 1 , height:300}}
-            exit={{ scale:0 }}
+            initial={{ height: 0 }}
+            animate={{ scale: 1, height: 300 }}
+            exit={{ scale: 0 }}
             transition={{
-              type: 'spring' ,
+              type: "spring",
               stiffness: 400,
-    damping: 40,   
-               delay: 0,
-               duration: 0.3
+              damping: 40,
+              delay: 0,
+              duration: 0.3,
             }}
-             className="absolute flex flex-col backdrop-blur-[3px] bg-bg-primary/60 border border-black w-[32%] ml-1  -bottom-[18.5rem] z-50 rounded-md overflow-hidden"
+            className="absolute flex flex-col backdrop-blur-[3px] bg-bg-primary/60 border border-black w-[32%] ml-1  -bottom-[19rem] z-50 rounded-md overflow-hidden"
           >
             <div>
               <AnimatePresence>
-
-              {suggestions.slice(0, 7).map((item,index) => {
-                return (
-                  // mousedown is used beacuse it fires before onBlur in inputText so search get executed
-                  <motion.p 
-                  key={index}
-                  initial={{ opacity: 0  }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{
-                     duration: 0.3
-                  }}
-                  onMouseDown={() => {
-                      setSearchTerm(item);
-                      navigate(`/search/${item}`);
-                    }}
-                    className="my-2 pl-5 px-2 cursor-pointer  hover:bg-slate-300/20 duration-150 rounded-lg mx-2 p-1 font-normal text-base"
+                {suggestions.slice(0, 7).map((item, index) => {
+                  return (
+                    // mousedown is used beacuse it fires before onBlur in inputText so search get executed
+                    <motion.p
+                      key={index}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{
+                        duration: 0.3,
+                      }}
+                      onMouseDown={() => {
+                        setSearchTerm(item);
+                        navigate(`/search/${item}`);
+                      }}
+                      className="my-2 pl-3 px-2 cursor-pointer  hover:bg-slate-300/20 duration-150 rounded-lg mx-2 p-1 font-normal text-base"
                     >
-                    {item}
-                  </motion.p>
-                );
-              })}
+                      {item}
+                    </motion.p>
+                  );
+                })}
               </AnimatePresence>
             </div>
           </motion.div>
