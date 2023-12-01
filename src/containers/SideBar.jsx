@@ -451,7 +451,7 @@ const SideBar = () => {
             </div>
             <div className="footer mb-32  border-gray-200/10 border-t pt-6">
               <h2>Made with Love by Nainish</h2>
-              <h2 className="my-4">NEXTTUBE</h2>
+              <h2 className="my-4">Chatur Edtech</h2>
             </div>
           </motion.div>
         )}
