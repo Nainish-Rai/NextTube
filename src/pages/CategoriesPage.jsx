@@ -5,6 +5,7 @@ import VideoCard from "../components/VideoCard";
 const CategoriesPage = () => {
   const id = useParams();
   const [data, setData] = useState([]);
+  console.log(data);
   useEffect(() => {
     api(`trending?type=${id.id}&region=IN`).then((response) => {
       setData(response);
