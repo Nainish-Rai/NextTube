@@ -3,7 +3,7 @@ import React from "react";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 export default function useApi(id) {
   const { data, error, isLoading } = useSWR(
-    `https://iv.melmac.space/api/v1/${id}`,
+    `https://vid.puffyan.us/api/v1/${id}`,
     fetcher
   );
 
