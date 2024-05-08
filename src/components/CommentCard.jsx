@@ -23,9 +23,8 @@ const CommentCard = ({
       {/* right */}
       <div>
         <div className="flex items-center space-x-2">
-          <a href={authorUrl}>
-            <h1 className="text-base    ">{authorDisplayName}</h1>
-          </a>
+          <h1 className="text-base    ">{authorDisplayName}</h1>
+
           <p
             className="font-thin text-xs
                 "

@@ -17,6 +17,7 @@ const ChannelDetail = () => {
     data && setVideoData(data.latestVideos);
   }, [id.id]);
   const { data, isLoading, isError } = useApi(`channels/${id.id}`);
+  console.log(data);
 
   if (isError)
     return (
@@ -45,7 +46,9 @@ const ChannelDetail = () => {
           <div className="banner w-full h-72   rounded-t-3xl overflow-hidden brightness-90 relative">
             {data.authorBanners && (
               <img
-                src={data.authorBanners && data.authorBanners[1].url}
+                src={
+                  data.authorBanners.length >= 2 && data.authorBanners[1].url
+                }
                 className="object-cover h-full"
               />
             )}
