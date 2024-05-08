@@ -19,6 +19,7 @@ const VideoDetails = () => {
   // console.log(id);
 
   const { data, isLoading, isError } = useApi(`videos/${id}`);
+  console.log(data);
   if (isError) return "An error has occurred.";
   if (isLoading)
     return (
@@ -32,15 +33,20 @@ const VideoDetails = () => {
     type: "video",
     sources: [
       {
-        src: data && data.formatStreams[data.formatStreams.length - 2].url,
+        src: data && data.formatStreams[0].url,
         type: "video/mp4",
         size: 360,
       },
       {
-        src: data && data.formatStreams[data.formatStreams.length - 1].url,
+        src: data.formatStreams.length == 2 && data.formatStreams[1].url,
         type: "video/webm",
         size: 720,
       },
+      // {
+      //   src: data.adaptiveFormats[data.adaptiveFormats.length - 1].url,
+      //   type: "video/webm",
+      //   size: 1080,
+      // },
     ],
     poster: data.videoThumbnails && data.videoThumbnails[3].url,
     // tracks: [

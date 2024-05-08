@@ -14,8 +14,9 @@ const CommentSection = (videoId) => {
       // console.log(response)
     });
   }, [videoId.videoId]);
+  // console.log(data);
 
-  if (data) {
+  if (data != undefined) {
     return (
       <div className="p-1 mt-10">
         <div>
@@ -35,8 +36,9 @@ const CommentSection = (videoId) => {
                 key={index}
                 authorDisplayName={item.author}
                 authorProfile={
-                  item.authorThumbnails && item.authorThumbnails[1].url
+                  item.authorThumbnails && item.authorThumbnails[0].url
                 }
+                authorUrl={item.authorUrl}
                 textDisplay={item.contentHtml ? item.contentHtml : item.content}
                 publishedTimeText={item.pubishedText}
                 likesCount={item.likeCount}
