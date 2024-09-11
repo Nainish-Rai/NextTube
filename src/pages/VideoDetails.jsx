@@ -37,16 +37,16 @@ const VideoDetails = () => {
         type: "video/mp4",
         size: 360,
       },
-      // {
-      //   src: data.formatStreams.length == 2 && data.formatStreams[1].url,
-      //   type: "video/webm",
-      //   size: 720,
-      // },
-      // {
-      //   src: data.adaptiveFormats[data.adaptiveFormats.length - 1].url,
-      //   type: "video/webm",
-      //   size: 1080,
-      // },
+      {
+        src: data.formatStreams.length == 2 && data.formatStreams[1].url,
+        type: "video/webm",
+        size: 720,
+      },
+      {
+        src: data.adaptiveFormats[data.adaptiveFormats.length - 1].url,
+        type: "video/webm",
+        size: 1080,
+      },
     ],
     poster: data.videoThumbnails && data.videoThumbnails[3].url,
     // tracks: [
